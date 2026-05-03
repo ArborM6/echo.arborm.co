@@ -1,0 +1,190 @@
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&family=ZCOOL+KuaiLe&family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css');
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+:root {
+  --paper: #FFFFFF;
+  --paper-warm: #F6F6F4;
+  --paper-deep: #ECECE9;
+  --section-alt: #F5F5F3;
+  --ink: #3A3A38;
+  --ink-soft: #66665F;
+  --ink-faint: #A0A09A;
+  --gold: #A89572;
+  --celadon: #97A39C;
+  --nav-bg: rgba(255, 255, 255, 0.82);
+  --mist-stop: #FFFFFF;
+  --mountain-deep: #4A4A47;
+  --mountain-mid: #6B6B66;
+  --mountain-soft: rgba(74, 74, 69, 0.08);
+  --hairline: rgba(74, 74, 69, 0.14);
+  --hairline-soft: rgba(74, 74, 69, 0.10);
+  --pill-primary-bg: #3A3A38;
+  --pill-primary-fg: #FFFFFF;
+  --pill-ghost-bg: rgba(255, 255, 255, 0.6);
+  --pill-ghost-border: rgba(58, 58, 56, 0.18);
+  --frosted-bg: rgba(255, 255, 255, 0.65);
+  --frosted-border: rgba(58, 58, 56, 0.14);
+}
+[data-theme="dark"] {
+  --paper: #2A2D33;
+  --paper-warm: #2F3239;
+  --paper-deep: #353941;
+  --section-alt: #313440;
+  --ink: #ECE8DF;
+  --ink-soft: #C2BDB2;
+  --ink-faint: #8E8A82;
+  --gold: #D4BF93;
+  --celadon: #A3B0A8;
+  --nav-bg: rgba(42, 45, 51, 0.82);
+  --mist-stop: #2A2D33;
+  --mountain-deep: #D4D0C7;
+  --mountain-mid: #A8A49C;
+  --mountain-soft: rgba(236, 232, 223, 0.10);
+  --hairline: rgba(236, 232, 223, 0.20);
+  --hairline-soft: rgba(236, 232, 223, 0.14);
+  --pill-primary-bg: #ECE8DF;
+  --pill-primary-fg: #2A2D33;
+  --pill-ghost-bg: rgba(255, 255, 255, 0.05);
+  --pill-ghost-border: rgba(236, 232, 223, 0.24);
+  --frosted-bg: rgba(53, 57, 65, 0.65);
+  --frosted-border: rgba(236, 232, 223, 0.16);
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 11rem;
+  font-size: 120%;
+}
+html, body, #root {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: 'LXGW WenKai', 'Liu Jian Mao Cao', 'Noto Serif SC', 'Songti SC', serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 600ms ease, color 600ms ease;
+}
+body {
+  background-color: var(--paper);
+}
+/* SVG color overrides for dark mode — recolor hardcoded ink-wash hex values */
+[data-theme="dark"] [fill="#4A4A47"],
+[data-theme="dark"] [fill="#4A4A45"] { fill: #D4D0C7; }
+[data-theme="dark"] [fill="#6B6B66"] { fill: #A8A49C; }
+[data-theme="dark"] [stroke="#4A4A47"],
+[data-theme="dark"] [stroke="#4A4A45"] { stroke: #D4D0C7; }
+[data-theme="dark"] [stop-color="#FFFFFF"] { stop-color: #2A2D33; }
+[data-theme="dark"] [stop-color="#ECE7DC"] { stop-color: #2A2D33; }
+.brand-script {
+  font-family: 'ZCOOL KuaiLe', 'LXGW WenKai', 'Ma Shan Zheng', cursive;
+  letter-spacing: 0.08em;
+  font-weight: 400;
+}
+.font-song {
+  font-family: 'LXGW WenKai', 'Noto Serif SC', 'Songti SC', serif;
+  letter-spacing: 0.02em;
+}
+.font-sans-cn {
+  font-family: 'Noto Sans SC', system-ui, sans-serif;
+}
+.ink-text { color: var(--ink); opacity: 0.88; }
+.ink-soft { color: var(--ink-soft); }
+.ink-faint { color: var(--ink-faint); }
+.frosted-paper {
+  background: var(--frosted-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--frosted-border);
+}
+.pill-primary {
+  background: var(--pill-primary-bg);
+  color: var(--pill-primary-fg);
+  border: 1px solid var(--pill-primary-bg);
+  transition: transform 400ms ease, background 400ms ease;
+}
+.pill-primary:hover { transform: translateY(-2px); }
+.pill-ghost {
+  background: var(--pill-ghost-bg);
+  color: var(--ink);
+  border: 1px solid var(--pill-ghost-border);
+  backdrop-filter: blur(6px);
+  transition: transform 400ms ease, border-color 400ms ease;
+}
+.pill-ghost:hover { transform: translateY(-2px); }
+@keyframes drift {
+  0% { transform: translateX(-5%); }
+  50% { transform: translateX(5%); }
+  100% { transform: translateX(-5%); }
+}
+.mist-drift { animation: drift 60s ease-in-out infinite; }
+.mist-drift-slow { animation: drift 90s ease-in-out infinite reverse; }
+@keyframes bird-fly {
+  0% { transform: translate(0, 0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translate(80vw, -40px); opacity: 0; }
+}
+.bird-1 { animation: bird-fly 55s linear infinite; }
+.bird-2 { animation: bird-fly 70s linear infinite 12s; }
+.bird-3 { animation: bird-fly 65s linear infinite 28s; }
+.divider-glow {
+  background: linear-gradient(90deg, transparent, rgba(74, 74, 69, 0.18), transparent);
+}
+::selection { background: rgba(168, 149, 114, 0.22); color: var(--ink); }
+/* Small text +10% (headings unchanged) */
+.text-xs { font-size: 0.825rem; }
+.text-sm { font-size: 0.9625rem; }
+.text-base { font-size: 1.1rem; }
+/* Legal subpage prose */
+.legal-prose p {
+  font-size: 1rem;
+  line-height: 2;
+  margin: 0 0 1.4em;
+  color: var(--ink);
+  opacity: 0.88;
+}
+.legal-prose h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 2.4em 0 1em;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+.legal-prose ul {
+  margin: 0 0 1.6em;
+  padding: 0;
+  list-style: none;
+}
+.legal-prose ul li {
+  position: relative;
+  padding-left: 1.4em;
+  line-height: 2;
+  margin-bottom: 0.6em;
+  color: var(--ink-soft);
+}
+.legal-prose ul li::before {
+  content: '';
+  position: absolute;
+  left: 0.2em;
+  top: 0.95em;
+  width: 6px;
+  height: 1px;
+  background: var(--ink-faint);
+}
+.legal-prose strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.legal-prose a {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(168, 149, 114, 0.32);
+  transition: border-color 400ms ease;
+}
+.legal-prose a:hover {
+  border-bottom-color: rgba(168, 149, 114, 0.7);
+}
