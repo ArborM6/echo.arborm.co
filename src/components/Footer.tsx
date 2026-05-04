@@ -127,7 +127,7 @@ export function Footer() {
             className="inline-flex items-center justify-center gap-1.5 hover:ink-soft transition-colors duration-500">
             
             <img
-              src="/\u516C\u5B89\u5907\u6848\u56FE\u6807.png"
+              src="/police-badge.png"
               alt=""
               aria-hidden="true"
               className="w-3.5 h-3.5 object-contain" />
