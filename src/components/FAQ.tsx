@@ -2,22 +2,22 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { MountainDivider } from './MountainDivider';
-type Item = {
-  q: string;
-  a: string;
-};
-const items: Item[] = [
-{
-  q: '回响的消息是如何生成的？',
-  a: '回响会综合你的城市、时间、天气与设备状态，配合你设置的偏好与语气，生成一段适合此刻心境的中文消息。它不是机械的提醒，更像一位安静的朋友，挑了一个合适的时刻轻声说话。'
-},
-{
-  q: '我可以决定它说话的方式吗？',
-  a: '可以。你能在「设置 — 偏好」里选择文字风格——唐诗、宋词或散文，让消息以你喜欢的笔调出现，逐渐贴近你自己的呼吸。'
-}];
+import { useLanguage } from '../i18n';
 
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
+  const { t } = useLanguage();
+
+  const items = [
+  {
+    q: t('faq.q1'),
+    a: t('faq.a1')
+  },
+  {
+    q: t('faq.q2'),
+    a: t('faq.a2')
+  }];
+
   return (
     <section
       id="faq"
@@ -92,13 +92,13 @@ export function FAQ() {
           className="text-center">
           
           <p className="font-sans-cn text-[11px] tracking-[0.4em] ink-faint mb-4">
-            FAQ
+            {t('faq.label')}
           </p>
           <div className="mb-6">
             <MountainDivider opacity={0.3} />
           </div>
           <h2 className="font-song text-3xl md:text-4xl ink-text leading-relaxed">
-            一些你可能想问的事
+            {t('faq.title')}
           </h2>
         </motion.div>
 
@@ -107,7 +107,7 @@ export function FAQ() {
             const isOpen = open === i;
             return (
               <motion.li
-                key={it.q}
+                key={i}
                 initial={{
                   opacity: 0,
                   y: 12

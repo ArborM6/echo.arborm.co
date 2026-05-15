@@ -3,24 +3,27 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { ThemeToggle } from './ThemeToggle';
+import { LanguageToggle } from './LanguageToggle';
+import { useLanguage } from '../i18n';
 export function Nav() {
   const location = useLocation();
   const onHome = location.pathname === '/';
+  const { t } = useLanguage();
   const links = [
   {
-    label: '功能',
+    label: t('nav.features'),
     href: '/#features'
   },
   {
-    label: '体验',
+    label: t('nav.showcase'),
     href: '/#showcase'
   },
   {
-    label: '订阅',
+    label: t('nav.subscription'),
     href: '/#subscription'
   },
   {
-    label: '答疑',
+    label: t('nav.faq'),
     href: '/#faq'
   }];
 
@@ -86,7 +89,7 @@ export function Nav() {
         <Link
           to="/"
           onClick={handleBrandClick}
-          aria-label="回响 Echo · 回到顶部"
+          aria-label={t('nav.brand_aria')}
           className="flex items-center gap-3 group">
           
           {/* Brand logo */}
@@ -149,18 +152,21 @@ export function Nav() {
 
           {/* Company link */}
           <a
-            href="https://arborm.com/"
+            href="https://arborm.co/"
             target="_blank"
             rel="noopener noreferrer"
             className="group/company inline-flex items-center gap-1.5 font-song text-sm ink-soft hover:ink-text transition-colors duration-500 px-3 py-1.5"
-            aria-label="访问阿博木公司主页">
+            aria-label={t('nav.company_aria')}>
             
-            <span>阿博木</span>
+            <span>{t('nav.company')}</span>
             <ArrowUpRight
               className="w-3.5 h-3.5 transition-transform duration-500 group-hover/company:translate-x-0.5 group-hover/company:-translate-y-0.5"
               strokeWidth={1.4} />
             
           </a>
+
+          {/* Language toggle */}
+          <LanguageToggle />
 
           {/* Theme toggle */}
           <ThemeToggle />

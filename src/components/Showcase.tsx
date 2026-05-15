@@ -3,33 +3,7 @@ import { motion, useScroll } from 'framer-motion';
 import { PhoneMockup } from './PhoneMockup';
 import { InkBackground } from './InkBackground';
 import { MountainDivider } from './MountainDivider';
-const screens: Array<{
-  key: string;
-  caption: string;
-  offset: string;
-  imageSrc: string;
-}> = [
-{
-  key: 'white',
-  caption: '白',
-  offset: 'lg:translate-y-0',
-  imageSrc: "/image.png"
-
-},
-{
-  key: 'dark',
-  caption: '暗',
-  offset: 'lg:translate-y-10',
-  imageSrc: "/image-1.png"
-
-},
-{
-  key: 'ink',
-  caption: '水墨',
-  offset: 'lg:-translate-y-6',
-  imageSrc: "/image-2.png"
-
-}];
+import { useLanguage } from '../i18n';
 
 export function Showcase() {
   const ref = useRef<HTMLElement>(null);
@@ -37,6 +11,28 @@ export function Showcase() {
     target: ref,
     offset: ['start end', 'end start']
   });
+  const { t } = useLanguage();
+
+  const screens = [
+  {
+    key: 'white',
+    caption: t('showcase.white'),
+    offset: 'lg:translate-y-0',
+    imageSrc: "/image.png"
+  },
+  {
+    key: 'dark',
+    caption: t('showcase.dark'),
+    offset: 'lg:translate-y-10',
+    imageSrc: "/image-1.png"
+  },
+  {
+    key: 'ink',
+    caption: t('showcase.ink'),
+    offset: 'lg:-translate-y-6',
+    imageSrc: "/image-2.png"
+  }];
+
   return (
     <section
       ref={ref}
@@ -66,13 +62,13 @@ export function Showcase() {
           className="text-center max-w-2xl mx-auto">
           
           <p className="font-sans-cn text-[11px] tracking-[0.4em] ink-faint mb-4">
-            EXPERIENCE
+            {t('showcase.label')}
           </p>
           <h2 className="font-song text-3xl md:text-4xl ink-text leading-relaxed">
-            像翻一本随身的小诗集
+            {t('showcase.title')}
           </h2>
           <p className="mt-6 font-song text-sm md:text-base leading-[2] ink-soft">
-            消息、设置、收藏，皆在一方安静之间。
+            {t('showcase.desc')}
           </p>
           <div className="mt-8">
             <MountainDivider />
@@ -104,7 +100,7 @@ export function Showcase() {
             
               <PhoneMockup
               imageSrc={s.imageSrc}
-              imageAlt={`回响 - ${s.caption}主题`}
+              imageAlt={`Echo - ${s.caption}`}
               scale={0.85} />
             
               <p className="mt-6 font-song text-base ink-text tracking-[0.4em]">

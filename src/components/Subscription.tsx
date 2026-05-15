@@ -2,51 +2,23 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { MountainDivider } from './MountainDivider';
-const perks = ['更多主题', '更多字体', '专属头像', '充足生成额度'];
-type Row = {
-  feature: string;
-  free: string;
-  pro: string;
-};
-const rows: Row[] = [
-{
-  feature: '定时消息',
-  free: '✓',
-  pro: '✓'
-},
-{
-  feature: '主题',
-  free: '基础',
-  pro: '所有'
-},
-{
-  feature: '字体',
-  free: '基础',
-  pro: '所有'
-},
-{
-  feature: '文字风格',
-  free: '基础',
-  pro: '所有'
-},
-{
-  feature: '配图风格',
-  free: '无法生图',
-  pro: '所有'
-},
-{
-  feature: '手动额度',
-  free: '1 条',
-  pro: '3 条'
-},
-{
-  feature: '专属头像',
-  free: '—',
-  pro: '✓'
-}];
+import { useLanguage } from '../i18n';
 
 export function Subscription() {
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const perks = [t('sub.perk1'), t('sub.perk2'), t('sub.perk3'), t('sub.perk4')];
+
+  const rows = [
+  { feature: t('sub.row_schedule'), free: '✓', pro: '✓' },
+  { feature: t('sub.row_theme'), free: t('sub.val_basic'), pro: t('sub.val_all') },
+  { feature: t('sub.row_font'), free: t('sub.val_basic'), pro: t('sub.val_all') },
+  { feature: t('sub.row_style'), free: t('sub.val_basic'), pro: t('sub.val_all') },
+  { feature: t('sub.row_image'), free: t('sub.val_no_image'), pro: t('sub.val_all') },
+  { feature: t('sub.row_manual'), free: t('sub.val_1'), pro: t('sub.val_3') },
+  { feature: t('sub.row_avatar'), free: '—', pro: '✓' }];
+
   return (
     <section
       id="subscription"
@@ -80,20 +52,20 @@ export function Subscription() {
               color: 'var(--gold)'
             }}>
             
-            ECHO · PRO
+            {t('sub.label')}
           </p>
           <h2 className="font-song text-3xl md:text-4xl ink-text leading-relaxed">
-            若你愿意走得更远一些
+            {t('sub.title')}
           </h2>
           <p className="mt-6 font-song text-sm md:text-base leading-[2] ink-soft">
-            Pro 会为你打开更多主题、更多字体，
+            {t('sub.desc_1')}
             <br />
-            以及一份充足而从容的生成额度。
+            {t('sub.desc_2')}
           </p>
           <p className="mt-5 font-song text-sm md:text-[15px] leading-[2] ink-faint italic">
-            像在山中多备一盏灯，
+            {t('sub.poetic_1')}
             <br className="md:hidden" />
-            让长夜里的字句，仍能温柔地落下。
+            {t('sub.poetic_2')}
           </p>
 
           <div className="mt-10">
@@ -160,7 +132,7 @@ export function Subscription() {
                 color: 'var(--gold)'
               }}>
               
-              {open ? '收起对比' : '了解 Pro'}
+              {open ? t('sub.collapse') : t('sub.expand')}
               <motion.span
                 animate={{
                   rotate: open ? 180 : 0
@@ -214,15 +186,15 @@ export function Subscription() {
                       borderBottom: '1px solid var(--hairline-soft)'
                     }}>
                     
-                      <div className="px-5 py-4">功能</div>
-                      <div className="px-5 py-4 text-center">免费</div>
+                      <div className="px-5 py-4">{t('sub.col_feature')}</div>
+                      <div className="px-5 py-4 text-center">{t('sub.col_free')}</div>
                       <div
                       className="px-5 py-4 text-center"
                       style={{
                         color: 'var(--gold)'
                       }}>
                       
-                        PRO
+                        {t('sub.col_pro')}
                       </div>
                     </div>
                     {/* Rows */}

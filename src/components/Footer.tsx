@@ -2,7 +2,9 @@ import React from 'react';
 import { Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { MountainDivider } from './MountainDivider';
+import { useLanguage } from '../i18n';
 export function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="relative w-full pt-16 pb-12 overflow-hidden">
       {/* faint ink-wash mountain watermark */}
@@ -64,16 +66,16 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-5 font-song text-sm leading-[2] ink-soft max-w-sm">
-              在合适的时间，
+              {t('footer.slogan_1')}
               <br />
-              把生活的片刻，化成一段安静的消息。
+              {t('footer.slogan_2')}
             </p>
           </div>
 
           <div className="flex flex-col gap-8 md:flex-row md:gap-14 md:items-start">
             <div>
               <p className="font-song text-sm ink-text mb-3 tracking-wider">
-                联系
+                {t('footer.contact')}
               </p>
               <a
                 href="mailto:support@arborm.com"
@@ -85,7 +87,7 @@ export function Footer() {
             </div>
             <div>
               <p className="font-song text-sm ink-text mb-3 tracking-wider">
-                条款
+                {t('footer.terms_label')}
               </p>
               <ul className="space-y-2">
                 <li>
@@ -93,7 +95,7 @@ export function Footer() {
                     to="/privacy"
                     className="font-song text-[14px] ink-soft hover:ink-text transition-colors duration-500">
                     
-                    隐私政策
+                    {t('footer.privacy')}
                   </Link>
                 </li>
                 <li>
@@ -101,7 +103,7 @@ export function Footer() {
                     to="/terms"
                     className="font-song text-[14px] ink-soft hover:ink-text transition-colors duration-500">
                     
-                    服务条款
+                    {t('footer.terms')}
                   </Link>
                 </li>
               </ul>
@@ -110,7 +112,7 @@ export function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col md:flex-row md:items-center md:justify-center gap-x-4 gap-y-1.5 font-sans-cn text-[11px] ink-faint text-center">
-          <span>© 2026 合肥阿博木科技有限公司 版权所有</span>
+          <span className="block mt-6">{t('footer.copyright')}</span>
         </div>
       </div>
     </footer>);

@@ -3,6 +3,7 @@ import { motion, useScroll } from 'framer-motion';
 import { Apple } from 'lucide-react';
 import { InkBackground } from './InkBackground';
 import { PhoneMockup } from './PhoneMockup';
+import { useLanguage } from '../i18n';
 
 function AndroidIcon({ className }: { className?: string }) {
   return (
@@ -33,18 +34,14 @@ export function Hero() {
     target: ref,
     offset: ['start start', 'end start']
   });
-  const titleChars = [
-  '让',
-  '每',
-  '一',
-  '次',
-  '提',
-  '醒',
-  '，',
-  '都',
-  '有',
-  '诗',
-  '意'];
+  const { t, locale } = useLanguage();
+
+  // For animation: Chinese uses char-by-char, English uses word-by-word
+  const titleText = t('hero.title');
+  const isEnglish = locale === 'en';
+  const titleUnits = isEnglish
+    ? titleText.split(/(\s+)/).filter(Boolean) // split by whitespace, keep spaces
+    : titleText.split('');
 
   return (
     <section
@@ -73,11 +70,11 @@ export function Hero() {
               }}
               className="font-sans-cn text-xs tracking-[0.4em] ink-faint mb-6">
               
-              ECHO · 回 响
+              {t('hero.subtitle')}
             </motion.p>
 
             <h1 className="font-song font-medium ink-text text-[2.4rem] sm:text-5xl md:text-6xl leading-[1.35] tracking-wide">
-              {titleChars.map((c, i) =>
+              {titleUnits.map((c, i) =>
               <motion.span
                 key={i}
                 initial={{
@@ -90,10 +87,11 @@ export function Hero() {
                 }}
                 transition={{
                   duration: 1.1,
-                  delay: 0.4 + i * 0.06,
+                  delay: 0.4 + i * (isEnglish ? 0.08 : 0.06),
                   ease: 'easeOut'
                 }}
-                className="inline-block">
+                className="inline-block"
+                style={c.trim() === '' ? { whiteSpace: 'pre' } : undefined}>
                 
                   {c}
                 </motion.span>
@@ -116,9 +114,9 @@ export function Hero() {
               }}
               className="mt-8 font-song text-[15px] md:text-base leading-[2] ink-soft max-w-xl">
               
-              Echo 会在合适的时间，把天气、城市、设备状态
+              {t('hero.desc_1')}
               <br className="hidden md:block" />
-              与生活片刻，化成一段安静的消息。
+              {t('hero.desc_2')}
             </motion.p>
 
             <motion.div
@@ -141,14 +139,14 @@ export function Hero() {
               <button
                 type="button"
                 disabled
-                aria-label="iOS 版 · 敬请期待"
+                aria-label={t('hero.ios_aria')}
                 className="pill-ghost inline-flex items-center justify-center gap-2 w-[260px] h-12 px-8 rounded-full font-song text-sm cursor-not-allowed whitespace-nowrap"
                 style={{
                   opacity: 0.78
                 }}>
                 
                 <Apple className="w-4 h-4 flex-shrink-0" strokeWidth={1.6} />
-                <span className="whitespace-nowrap">iOS 版</span>
+                <span className="whitespace-nowrap">{t('hero.ios_label')}</span>
                 <span
                   className="ml-1 inline-flex items-center px-2 py-[1px] rounded-full text-[10px] tracking-[0.25em] font-sans-cn whitespace-nowrap flex-shrink-0"
                   style={{
@@ -157,21 +155,21 @@ export function Hero() {
                     border: '1px solid rgba(168,149,114,0.3)'
                   }}>
                   
-                  敬请期待
+                  {t('hero.coming_soon')}
                 </span>
               </button>
 
               <button
                 type="button"
                 disabled
-                aria-label="Android 版 · 敬请期待"
+                aria-label={t('hero.android_aria')}
                 className="pill-ghost inline-flex items-center justify-center gap-2 w-[260px] h-12 px-8 rounded-full font-song text-sm cursor-not-allowed whitespace-nowrap"
                 style={{
                   opacity: 0.78
                 }}>
                 
                 <AndroidIcon className="w-4 h-4 flex-shrink-0" />
-                <span className="whitespace-nowrap">Android 版</span>
+                <span className="whitespace-nowrap">{t('hero.android_label')}</span>
                 <span
                   className="ml-1 inline-flex items-center px-2 py-[1px] rounded-full text-[10px] tracking-[0.25em] font-sans-cn whitespace-nowrap flex-shrink-0"
                   style={{
@@ -180,7 +178,7 @@ export function Hero() {
                     border: '1px solid rgba(168,149,114,0.3)'
                   }}>
                   
-                  敬请期待
+                  {t('hero.coming_soon')}
                 </span>
               </button>
             </motion.div>
@@ -198,9 +196,9 @@ export function Hero() {
               }}
               className="mt-10 flex items-center gap-4 ink-faint font-sans-cn text-[11px] tracking-widest">
               
-              <span>中文</span>
+              <span>{t('hero.tag_chinese')}</span>
               <span className="w-px h-3 bg-current opacity-30" />
-              <span>无广告</span>
+              <span>{t('hero.tag_no_ads')}</span>
             </motion.div>
           </div>
 
@@ -243,7 +241,7 @@ export function Hero() {
       {/* sliver hint of next section */}
       <div className="absolute bottom-0 inset-x-0 h-10 pointer-events-none">
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex justify-center">
-          <span className="font-song text-xs ink-faint">— 因 时 而 至 —</span>
+          <span className="font-song text-xs ink-faint">{t('hero.bottom_hint')}</span>
         </div>
       </div>
     </section>);

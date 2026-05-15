@@ -3,6 +3,7 @@ import './index.css';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
+import { LanguageProvider } from './i18n';
 // Apply saved theme before first paint to avoid flash
 try {
   const saved = window.localStorage.getItem('echo-theme');
@@ -12,7 +13,9 @@ try {
 } catch {}
 render(
   <BrowserRouter>
-    <App />
+    <LanguageProvider>
+      <App />
+    </LanguageProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );

@@ -2,34 +2,33 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mountain, Droplet, Bookmark, Leaf } from 'lucide-react';
 import { MountainDivider } from './MountainDivider';
-type Feature = {
-  icon: React.ReactNode;
-  title: string;
-  desc: string;
-};
-const features: Feature[] = [
-{
-  icon: <Mountain className="w-6 h-6" strokeWidth={1.2} />,
-  title: '因时而至',
-  desc: '根据时间、城市与状态，生成此刻的消息。'
-},
-{
-  icon: <Droplet className="w-6 h-6" strokeWidth={1.2} />,
-  title: '静心阅读',
-  desc: '宣纸、水墨、中文排版与自定义字体。'
-},
-{
-  icon: <Bookmark className="w-6 h-6" strokeWidth={1.2} />,
-  title: '轻轻收藏',
-  desc: '留住那些与你共鸣的句子。'
-},
-{
-  icon: <Leaf className="w-6 h-6" strokeWidth={1.2} />,
-  title: '随心而变',
-  desc: '主题、字体、语言、图片风格皆可调整。'
-}];
+import { useLanguage } from '../i18n';
 
 export function Features() {
+  const { t } = useLanguage();
+
+  const features = [
+  {
+    icon: <Mountain className="w-6 h-6" strokeWidth={1.2} />,
+    title: t('features.item1_title'),
+    desc: t('features.item1_desc')
+  },
+  {
+    icon: <Droplet className="w-6 h-6" strokeWidth={1.2} />,
+    title: t('features.item2_title'),
+    desc: t('features.item2_desc')
+  },
+  {
+    icon: <Bookmark className="w-6 h-6" strokeWidth={1.2} />,
+    title: t('features.item3_title'),
+    desc: t('features.item3_desc')
+  },
+  {
+    icon: <Leaf className="w-6 h-6" strokeWidth={1.2} />,
+    title: t('features.item4_title'),
+    desc: t('features.item4_desc')
+  }];
+
   return (
     <section
       id="features"
@@ -59,17 +58,17 @@ export function Features() {
           className="text-center max-w-2xl mx-auto">
           
           <p className="font-sans-cn text-[11px] tracking-[0.4em] ink-faint mb-4">
-            FEATURES
+            {t('features.label')}
           </p>
           <h2 className="font-song text-3xl md:text-4xl ink-text leading-relaxed">
-            一段消息，
+            {t('features.title_1')}
             <br className="md:hidden" />
-            落在你恰好需要的时刻
+            {t('features.title_2')}
           </h2>
           <p className="mt-6 font-song text-sm md:text-base leading-[2] ink-soft">
-            不是提醒，也不是通知，
+            {t('features.desc_1')}
             <br className="md:hidden" />
-            是一句轻声的、为你而来的话。
+            {t('features.desc_2')}
           </p>
           <div className="mt-10">
             <MountainDivider />

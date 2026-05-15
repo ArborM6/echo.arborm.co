@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Sun, Moon } from 'lucide-react';
+import { useLanguage } from '../i18n';
 type Theme = 'light' | 'dark';
 function getInitialTheme(): Theme {
   if (typeof window === 'undefined') return 'light';
@@ -9,6 +10,7 @@ function getInitialTheme(): Theme {
 }
 export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const { t } = useLanguage();
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     try {
@@ -21,7 +23,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggle}
-      aria-label={isDark ? '切换至亮色主题' : '切换至暗色主题'}
+      aria-label={isDark ? t('theme.to_light') : t('theme.to_dark')}
       className="relative inline-flex items-center justify-center w-9 h-9 rounded-full ml-1 md:ml-2 transition-colors duration-500"
       style={{
         border: '1px solid var(--hairline)',

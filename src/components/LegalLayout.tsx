@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 import { Footer } from './Footer';
 import { MountainDivider } from './MountainDivider';
+import { useLanguage } from '../i18n';
 type Props = {
   title: string;
   updatedAt: string;
   children: React.ReactNode;
 };
 export function LegalLayout({ title, updatedAt, children }: Props) {
+  const { t } = useLanguage();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -57,7 +59,7 @@ export function LegalLayout({ title, updatedAt, children }: Props) {
             className="inline-flex items-center gap-1 font-song text-sm ink-soft hover:ink-text transition-colors duration-500">
             
             <ChevronLeft className="w-4 h-4" strokeWidth={1.4} />
-            返回
+            {t('legal.back')}
           </Link>
         </div>
       </header>
@@ -78,13 +80,13 @@ export function LegalLayout({ title, updatedAt, children }: Props) {
           }}>
           
           <p className="font-sans-cn text-[11px] tracking-[0.4em] ink-faint mb-4">
-            {title === '隐私政策' ? 'PRIVACY' : 'TERMS'}
+            {title === '隐私政策' || title === '隱私政策' || title === 'Privacy Policy' ? t('legal.privacy_label') : t('legal.terms_label')}
           </p>
           <h1 className="font-song text-3xl md:text-4xl ink-text leading-relaxed">
             {title}
           </h1>
           <p className="mt-4 font-song text-sm ink-faint">
-            最后更新 · {updatedAt}
+            {t('legal.updated')} · {updatedAt}
           </p>
           <div className="mt-8">
             <MountainDivider opacity={0.3} />
