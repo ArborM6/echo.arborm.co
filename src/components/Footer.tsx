@@ -111,29 +111,6 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col md:flex-row md:items-center md:justify-center gap-x-4 gap-y-1.5 font-sans-cn text-[11px] ink-faint text-center">
           <span>© 2026 合肥阿博木科技有限公司 版权所有</span>
-          <span className="hidden md:inline opacity-50">·</span>
-          <a
-            href="https://beian.miit.gov.cn/#/Integrated/index"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:ink-soft transition-colors duration-500">
-            
-            皖ICP备2026007885号
-          </a>
-          <a
-            href="https://beian.mps.gov.cn/#/query/webSearch?code=34011102003969"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-1.5 hover:ink-soft transition-colors duration-500">
-            
-            <img
-              src="/police-badge.png"
-              alt=""
-              aria-hidden="true"
-              className="w-3.5 h-3.5 object-contain" />
-            
-            皖公网安备34011102003969号
-          </a>
         </div>
       </div>
     </footer>);

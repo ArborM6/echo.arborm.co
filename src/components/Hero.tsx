@@ -3,6 +3,30 @@ import { motion, useScroll } from 'framer-motion';
 import { Apple } from 'lucide-react';
 import { InkBackground } from './InkBackground';
 import { PhoneMockup } from './PhoneMockup';
+
+function AndroidIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.6}
+      strokeLinecap="round"
+      strokeLinejoin="round">
+      <path d="M5 11a7 7 0 0 1 14 0v6H5z" />
+      <line x1="8" y1="3" x2="9.5" y2="6" />
+      <line x1="16" y1="3" x2="14.5" y2="6" />
+      <circle cx="9" cy="13" r="0.6" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="13" r="0.6" fill="currentColor" stroke="none" />
+      <line x1="3" y1="12" x2="3" y2="17" />
+      <line x1="21" y1="12" x2="21" y2="17" />
+      <line x1="9" y1="17" x2="9" y2="20" />
+      <line x1="15" y1="17" x2="15" y2="20" />
+    </svg>
+  );
+}
+
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -117,16 +141,39 @@ export function Hero() {
               <button
                 type="button"
                 disabled
-                aria-label="下载 iOS 版 · 敬请期待"
-                className="pill-ghost inline-flex items-center gap-2 px-6 py-3 rounded-full font-song text-sm cursor-not-allowed"
+                aria-label="iOS 版 · 敬请期待"
+                className="pill-ghost inline-flex items-center justify-center gap-2 w-[260px] h-12 px-8 rounded-full font-song text-sm cursor-not-allowed whitespace-nowrap"
                 style={{
                   opacity: 0.78
                 }}>
                 
-                <Apple className="w-4 h-4" strokeWidth={1.6} />
-                <span>下载 iOS 版</span>
+                <Apple className="w-4 h-4 flex-shrink-0" strokeWidth={1.6} />
+                <span className="whitespace-nowrap">iOS 版</span>
                 <span
-                  className="ml-1 inline-flex items-center px-2 py-[1px] rounded-full text-[10px] tracking-[0.25em] font-sans-cn"
+                  className="ml-1 inline-flex items-center px-2 py-[1px] rounded-full text-[10px] tracking-[0.25em] font-sans-cn whitespace-nowrap flex-shrink-0"
+                  style={{
+                    color: '#A89572',
+                    background: 'rgba(168,149,114,0.12)',
+                    border: '1px solid rgba(168,149,114,0.3)'
+                  }}>
+                  
+                  敬请期待
+                </span>
+              </button>
+
+              <button
+                type="button"
+                disabled
+                aria-label="Android 版 · 敬请期待"
+                className="pill-ghost inline-flex items-center justify-center gap-2 w-[260px] h-12 px-8 rounded-full font-song text-sm cursor-not-allowed whitespace-nowrap"
+                style={{
+                  opacity: 0.78
+                }}>
+                
+                <AndroidIcon className="w-4 h-4 flex-shrink-0" />
+                <span className="whitespace-nowrap">Android 版</span>
+                <span
+                  className="ml-1 inline-flex items-center px-2 py-[1px] rounded-full text-[10px] tracking-[0.25em] font-sans-cn whitespace-nowrap flex-shrink-0"
                   style={{
                     color: '#A89572',
                     background: 'rgba(168,149,114,0.12)',
@@ -151,8 +198,6 @@ export function Hero() {
               }}
               className="mt-10 flex items-center gap-4 ink-faint font-sans-cn text-[11px] tracking-widest">
               
-              <span>iOS 16+</span>
-              <span className="w-px h-3 bg-current opacity-30" />
               <span>中文</span>
               <span className="w-px h-3 bg-current opacity-30" />
               <span>无广告</span>
