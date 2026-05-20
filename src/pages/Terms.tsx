@@ -1,66 +1,70 @@
 import React from 'react';
 import { LegalLayout } from '../components/LegalLayout';
+import { useLanguage } from '../i18n';
+
 export function Terms() {
+  const { t } = useLanguage();
   return (
-    <LegalLayout title="服务条款" updatedAt="2026 年 5 月">
-      <p>
-        欢迎使用回响（Echo）。在使用我们的产品与服务前，请仔细阅读以下条款。一旦下载、安装或使用回响，即视为你已阅读并同意本条款。
-      </p>
+    <LegalLayout
+      title={t('terms.title')}
+      updatedAt={t('terms.effective_date')}
+      label={t('legal.terms_label')}
+      versionInfo={t('terms.version')}
+    >
+      <p>{t('terms.intro')}</p>
 
-      <h2>一、关于回响</h2>
-      <p>
-        回响是一款由 Arbor M. 团队开发的 iOS
-        应用，旨在以诗意、克制的方式向你推送与生活相关的消息。本服务包括应用本体、生成的消息内容，以及附属的官网与支持渠道。
-      </p>
+      <h2>{t('terms.s1_title')}</h2>
+      <p>{t('terms.s1_content')}</p>
 
-      <h2>二、使用规则</h2>
+      <h2>{t('terms.s2_title')}</h2>
       <ul>
-        <li>请勿将回响用于违反所在地法律法规的用途。</li>
-        <li>请勿对应用进行逆向工程、反编译、破解或绕过付费机制。</li>
-        <li>请勿将自动生成的消息用于商业转发、批量传播或冒充他人发布。</li>
-        <li>请勿利用回响干扰他人或对服务实施攻击、滥用、恶意请求。</li>
+        <li>{t('terms.s2_email')}</li>
+        <li>{t('terms.s2_single')}</li>
+        <li>{t('terms.s2_stolen')}</li>
       </ul>
 
-      <h2>三、订阅与支付</h2>
-      <p>
-        回响提供免费版与 Pro 版。Pro 通过 Apple App Store
-        内购完成订阅，订阅周期、价格、续费规则以下单时 Apple
-        展示的为准。续订与退款由 Apple 处理，回响无法直接代为操作。
-      </p>
+      <h2>{t('terms.s3_title')}</h2>
+      <p>{t('terms.s3_intro')}</p>
+      <ul>
+        <li>{t('terms.s3_illegal')}</li>
+        <li>{t('terms.s3_attack')}</li>
+        <li>{t('terms.s3_scrape')}</li>
+      </ul>
+      <p>{t('terms.s3_enforce')}</p>
 
-      <h2>四、内容与版权</h2>
-      <p>
-        应用本体、界面设计、字体配置、生成的消息文本与素材，其著作权由 Arbor M.
-        或相应授权方所有。你可以在个人范围内自由阅读与收藏，但未经书面授权不得用于商业用途。
-      </p>
+      <h2>{t('terms.s4_title')}</h2>
+      <ul>
+        <li>{t('terms.s4_user')}</li>
+        <li>{t('terms.s4_app')}</li>
+      </ul>
 
-      <h2>五、生成消息的免责</h2>
-      <p>
-        回响生成的消息为基于上下文的文学化表达，不构成医疗、法律、投资或其他专业建议。请勿将其作为关键决策的依据。
-      </p>
+      <h2>{t('terms.s5_title')}</h2>
+      <ul>
+        <li>{t('terms.s5_iap')}</li>
+        <li>{t('terms.s5_refund')}</li>
+        <li>{t('terms.s5_manage')}</li>
+      </ul>
 
-      <h2>六、服务的变更与终止</h2>
-      <p>
-        我们保留在合理范围内调整、暂停或终止部分服务的权利。如发生重大变更，我们会通过应用或官网提前告知。若服务终止，已支付但未消费的订阅将依据
-        Apple 规则处理。
-      </p>
+      <h2>{t('terms.s6_title')}</h2>
+      <ul>
+        <li>{t('terms.s6_ai')}</li>
+        <li>{t('terms.s6_force')}</li>
+      </ul>
 
-      <h2>七、责任范围</h2>
-      <p>
-        在法律允许的最大范围内，回响及其团队不对因使用或无法使用本服务而产生的间接、附带或后果性损失承担责任。我们对你承担的总责任不超过你在过去
-        12 个月内为本服务支付的费用。
-      </p>
+      <h2>{t('terms.s7_title')}</h2>
+      <ul>
+        <li>{t('terms.s7_change')}</li>
+        <li>{t('terms.s7_quit')}</li>
+      </ul>
 
-      <h2>八、适用法律</h2>
-      <p>
-        本条款的解释与争议解决适用中华人民共和国法律（不含港澳台地区）。若你所在司法辖区另有强制规定，从其规定。
-      </p>
+      <h2>{t('terms.s8_title')}</h2>
+      <p>{t('terms.s8_content')}</p>
 
-      <h2>九、联系</h2>
+      <h2>{t('terms.s9_title')}</h2>
       <p>
-        如对本条款有任何疑问，请联系：
-        <a href="mailto:support@arborm.com">support@arborm.com</a>。
+        {t('terms.s9_email')}{' '}
+        <a href="mailto:support@arborm.co">support@arborm.co</a>
       </p>
-    </LegalLayout>);
-
+    </LegalLayout>
+  );
 }

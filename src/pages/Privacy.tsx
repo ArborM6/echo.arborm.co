@@ -1,80 +1,114 @@
 import React from 'react';
 import { LegalLayout } from '../components/LegalLayout';
+import { useLanguage } from '../i18n';
+
 export function Privacy() {
+  const { t } = useLanguage();
   return (
-    <LegalLayout title="隐私政策" updatedAt="2026 年 5 月">
-      <p>
-        回响（Echo）是一款帮助你以更安静方式接收消息的 iOS
-        应用。我们尊重你的隐私，并尽可能减少数据的收集与留存。这份隐私政策说明我们会收集哪些信息、为何收集、如何使用与保管。
-      </p>
+    <LegalLayout
+      title={t('privacy.title')}
+      updatedAt={t('privacy.effective_date')}
+      label={t('legal.privacy_label')}
+      versionInfo={t('privacy.version')}
+    >
+      <p>{t('privacy.intro')}</p>
 
-      <h2>一、我们收集的信息</h2>
-      <p>为了让回响能在合适的时刻为你生成消息，我们可能会处理以下信息：</p>
+      <h2>{t('privacy.s1_title')}</h2>
+
+      <h3>{t('privacy.s1_1_title')}</h3>
       <ul>
-        <li>
-          <strong>城市与时区</strong>
-          ：用于判断你所在的城市与当前时间，从而决定消息的语境。我们仅使用城市级别的位置，不会读取你的精确坐标。
-        </li>
-        <li>
-          <strong>天气与设备状态</strong>
-          ：例如电量、网络状态、是否处于专注模式等，以便让消息贴合此刻情境。这些信息仅在生成消息时使用，不会持续上传。
-        </li>
-        <li>
-          <strong>偏好设置</strong>
-          ：包括你选择的主题、字体、语言、配图风格等。这些信息保存在你的设备本地与你的
-          iCloud 中。
-        </li>
-        <li>
-          <strong>账号与订阅信息</strong>：若你购买 Pro，将通过 Apple
-          完成支付，我们仅会收到匿名的订阅状态，不会接触你的支付凭据。
-        </li>
-        <li>
-          <strong>诊断与崩溃日志</strong>
-          ：仅在你授权的前提下，用于排查产品问题。日志为匿名形式，不包含消息内容。
-        </li>
+        <li>{t('privacy.s1_1_account')}</li>
+        <li>{t('privacy.s1_1_profile')}</li>
+        <li>{t('privacy.s1_1_login')}</li>
       </ul>
 
-      <h2>二、我们不收集的信息</h2>
+      <h3>{t('privacy.s1_2_title')}</h3>
       <ul>
-        <li>我们不会读取你的通讯录、相册、相机、麦克风。</li>
-        <li>我们不会记录你阅读了哪些消息、停留了多久。</li>
-        <li>我们不会出售你的任何数据，也不会把数据分享给广告商。</li>
+        <li>{t('privacy.s1_2_device')}</li>
+        <li>{t('privacy.s1_2_status')}</li>
+        <li>{t('privacy.s1_2_location')}</li>
+        <li>{t('privacy.s1_2_push')}</li>
       </ul>
 
-      <h2>三、消息生成的方式</h2>
-      <p>
-        消息内容由回响在云端生成。生成所需的输入（如城市、时间、偏好）会以匿名方式送往生成服务，请求结束后即被丢弃，不与个人身份关联。
-      </p>
+      <h3>{t('privacy.s1_3_title')}</h3>
+      <ul>
+        <li>{t('privacy.s1_3_records')}</li>
+        <li>{t('privacy.s1_3_prefs')}</li>
+        <li>{t('privacy.s1_3_sub')}</li>
+      </ul>
 
-      <h2>四、收藏与本地数据</h2>
-      <p>
-        你收藏的消息仅保存在你的设备本地与 iCloud 中。卸载应用或退出 iCloud
-        即同步清除，回响不会保留备份。
-      </p>
+      <h2>{t('privacy.s2_title')}</h2>
+      <ul>
+        <li>{t('privacy.s2_service')}</li>
+        <li>{t('privacy.s2_push')}</li>
+        <li>{t('privacy.s2_security')}</li>
+        <li>{t('privacy.s2_improve')}</li>
+      </ul>
+      <p>{t('privacy.s2_not')}</p>
 
-      <h2>五、儿童隐私</h2>
-      <p>
-        回响并非面向 13
-        岁以下儿童的产品。我们不会有意收集儿童的个人信息。如发现误收集，请通过下方邮箱联系我们删除。
-      </p>
+      <h2>{t('privacy.s3_title')}</h2>
+      <ul>
+        <li>{t('privacy.s3_storage')}</li>
+        <li>{t('privacy.s3_password')}</li>
+        <li>{t('privacy.s3_ai')}</li>
+      </ul>
 
-      <h2>六、你的权利</h2>
-      <p>
-        你可以随时在应用内修改偏好、清除收藏，或卸载应用以删除全部本地数据。如需索取或删除任何与你相关的数据，请发送邮件至{' '}
-        <a href="mailto:support@arborm.com">support@arborm.com</a>，我们会在 7
-        个工作日内回复。
-      </p>
+      <h2>{t('privacy.s4_title')}</h2>
+      <p>{t('privacy.s4_intro')}</p>
+      <table>
+        <thead>
+          <tr>
+            <th>{t('privacy.s4_table_header_party')}</th>
+            <th>{t('privacy.s4_table_header_data')}</th>
+            <th>{t('privacy.s4_table_header_purpose')}</th>
+            <th>{t('privacy.s4_table_header_policy')}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{t('privacy.s4_row1_party')}</td>
+            <td>{t('privacy.s4_row1_data')}</td>
+            <td>{t('privacy.s4_row1_purpose')}</td>
+            <td><a href={t('privacy.s4_row1_policy_url')} target="_blank" rel="noopener noreferrer">{t('privacy.s4_row1_policy_url')}</a></td>
+          </tr>
+          <tr>
+            <td>{t('privacy.s4_row2_party')}</td>
+            <td>{t('privacy.s4_row2_data')}</td>
+            <td>{t('privacy.s4_row2_purpose')}</td>
+            <td><a href={t('privacy.s4_row2_policy_url')} target="_blank" rel="noopener noreferrer">{t('privacy.s4_row2_policy_url')}</a></td>
+          </tr>
+          <tr>
+            <td>{t('privacy.s4_row3_party')}</td>
+            <td>{t('privacy.s4_row3_data')}</td>
+            <td>{t('privacy.s4_row3_purpose')}</td>
+            <td><a href={t('privacy.s4_row3_policy_url')} target="_blank" rel="noopener noreferrer">{t('privacy.s4_row3_policy_url')}</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>{t('privacy.s4_outro')}</p>
 
-      <h2>七、政策的更新</h2>
-      <p>
-        本政策可能因产品演进而更新。重大变更时，我们会在应用与官网显著位置提示。继续使用即视为你接受更新后的版本。
-      </p>
+      <h2>{t('privacy.s5_title')}</h2>
+      <p>{t('privacy.s5_intro')}</p>
+      <ul>
+        <li>{t('privacy.s5_access')}</li>
+        <li>{t('privacy.s5_revoke')}</li>
+        <li>{t('privacy.s5_export')}</li>
+        <li>{t('privacy.s5_delete')}</li>
+      </ul>
 
-      <h2>八、联系</h2>
-      <p>
-        如对本政策有任何疑问，请写信给我们：
-        <a href="mailto:support@arborm.com">support@arborm.com</a>。
-      </p>
-    </LegalLayout>);
+      <h2>{t('privacy.s6_title')}</h2>
+      <p>{t('privacy.s6_content')}</p>
 
+      <h2>{t('privacy.s7_title')}</h2>
+      <p>{t('privacy.s7_content')}</p>
+
+      <h2>{t('privacy.s8_title')}</h2>
+      <p>{t('privacy.s8_content')}</p>
+      <p>
+        {t('privacy.s8_email')}{' '}
+        <a href="mailto:support@arborm.co">support@arborm.co</a>
+      </p>
+      <p>{t('privacy.s8_address')}</p>
+    </LegalLayout>
+  );
 }

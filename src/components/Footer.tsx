@@ -78,11 +78,11 @@ export function Footer() {
                 {t('footer.contact')}
               </p>
               <a
-                href="mailto:support@arborm.com"
+                href="mailto:support@arborm.co"
                 className="inline-flex items-center gap-2 font-song text-[14px] ink-soft hover:ink-text transition-colors duration-500">
                 
                 <Mail className="w-4 h-4" strokeWidth={1.4} />
-                support@arborm.com
+                support@arborm.co
               </a>
             </div>
             <div>
@@ -106,6 +106,8 @@ export function Footer() {
                     {t('footer.terms')}
                   </Link>
                 </li>
+                <li><Link to="/support" className="font-song text-[14px] ink-soft hover:ink-text transition-colors duration-500">{t('footer.support')}</Link></li>
+                <li><Link to="/delete-account" className="font-song text-[14px] ink-soft hover:ink-text transition-colors duration-500">{t('footer.delete_account')}</Link></li>
               </ul>
             </div>
           </div>

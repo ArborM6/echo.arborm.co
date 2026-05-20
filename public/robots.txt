@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /delete-account/confirm
 
-Sitemap: https://echo.arborm.com/sitemap.xml
+Sitemap: https://echo.arborm.co/sitemap.xml

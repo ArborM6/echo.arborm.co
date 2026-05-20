@@ -3,18 +3,36 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 import { Footer } from './Footer';
+import { LanguageToggle } from './LanguageToggle';
 import { MountainDivider } from './MountainDivider';
 import { useLanguage } from '../i18n';
 type Props = {
   title: string;
   updatedAt: string;
   children: React.ReactNode;
+  label?: string;
+  noIndex?: boolean;
+  versionInfo?: string;
 };
-export function LegalLayout({ title, updatedAt, children }: Props) {
+export function LegalLayout({ title, updatedAt, children, label, noIndex, versionInfo }: Props) {
   const { t } = useLanguage();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  useEffect(() => {
+    if (noIndex) {
+      let meta = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.name = 'robots';
+        document.head.appendChild(meta);
+      }
+      meta.content = 'noindex';
+      return () => {
+        if (meta && meta.parentNode) meta.parentNode.removeChild(meta);
+      };
+    }
+  }, [noIndex]);
   return (
     <div
       className="relative w-full min-h-screen overflow-x-hidden"
@@ -54,13 +72,16 @@ export function LegalLayout({ title, updatedAt, children }: Props) {
               </span>
             </span>
           </Link>
-          <Link
-            to="/"
-            className="inline-flex items-center gap-1 font-song text-sm ink-soft hover:ink-text transition-colors duration-500">
-            
-            <ChevronLeft className="w-4 h-4" strokeWidth={1.4} />
-            {t('legal.back')}
-          </Link>
+          <nav className="flex items-center gap-2" aria-label={t('legal.back')}>
+            <Link
+              to="/"
+              className="inline-flex items-center gap-1 font-song text-sm ink-soft hover:ink-text transition-colors duration-500">
+              
+              <ChevronLeft className="w-4 h-4" strokeWidth={1.4} />
+              {t('legal.back')}
+            </Link>
+            <LanguageToggle />
+          </nav>
         </div>
       </header>
 
@@ -80,14 +101,17 @@ export function LegalLayout({ title, updatedAt, children }: Props) {
           }}>
           
           <p className="font-sans-cn text-[11px] tracking-[0.4em] ink-faint mb-4">
-            {title === '隐私政策' || title === '隱私政策' || title === 'Privacy Policy' ? t('legal.privacy_label') : t('legal.terms_label')}
+            {label || t('legal.privacy_label')}
           </p>
           <h1 className="font-song text-3xl md:text-4xl ink-text leading-relaxed">
             {title}
           </h1>
-          <p className="mt-4 font-song text-sm ink-faint">
-            {t('legal.updated')} · {updatedAt}
-          </p>
+          {updatedAt !== '' && (
+            <p className="mt-4 font-song text-sm ink-faint">
+              {t('legal.updated')} · {updatedAt}
+              {versionInfo && <span> · {versionInfo}</span>}
+            </p>
+          )}
           <div className="mt-8">
             <MountainDivider opacity={0.3} />
           </div>

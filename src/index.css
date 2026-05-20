@@ -188,3 +188,36 @@ body {
 .legal-prose a:hover {
   border-bottom-color: rgba(168, 149, 114, 0.7);
 }
+.legal-prose table { width: 100%; border-collapse: collapse; margin: 1.2em 0 1.8em; font-size: 0.9rem; }
+.legal-prose th { text-align: left; padding: 0.7em 1em; font-weight: 500; color: var(--ink); border-bottom: 2px solid var(--hairline); font-size: 0.85rem; letter-spacing: 0.02em; }
+.legal-prose td { padding: 0.7em 1em; color: var(--ink-soft); border-bottom: 1px solid var(--hairline-soft); vertical-align: top; line-height: 1.7; }
+.legal-prose td a { color: var(--gold); border-bottom: 1px solid rgba(168, 149, 114, 0.32); transition: border-color 400ms ease; word-break: break-all; }
+.legal-prose td a:hover { border-bottom-color: rgba(168, 149, 114, 0.7); }
+.legal-prose h3 { font-size: 1.1rem; font-weight: 500; margin: 1.8em 0 0.8em; color: var(--ink); letter-spacing: 0.03em; }
+.callout-danger { position: relative; padding: 1.2em 1.5em; border-radius: 12px; background: rgba(220, 38, 38, 0.06); border: 1px solid rgba(220, 38, 38, 0.18); margin-bottom: 2em; }
+[data-theme="dark"] .callout-danger { background: rgba(220, 38, 38, 0.10); border-color: rgba(248, 113, 113, 0.24); }
+.callout-danger p { color: #b91c1c; font-weight: 500; margin-bottom: 0.6em; font-size: 0.95rem; }
+[data-theme="dark"] .callout-danger p { color: #fca5a5; }
+.callout-danger ul { margin: 0; padding: 0; list-style: none; }
+.callout-danger ul li { position: relative; padding-left: 1.2em; line-height: 1.8; color: #991b1b; font-size: 0.9rem; }
+[data-theme="dark"] .callout-danger ul li { color: #fecaca; }
+.callout-danger ul li::before { content: '•'; position: absolute; left: 0; top: 0; width: auto; height: auto; background: none; color: #dc2626; }
+[data-theme="dark"] .callout-danger ul li::before { color: #f87171; }
+.form-input { width: 100%; padding: 0.75em 1em; border-radius: 10px; border: 1px solid var(--hairline); background: var(--paper-warm); color: var(--ink); font-family: inherit; font-size: 0.95rem; outline: none; transition: border-color 400ms ease, box-shadow 400ms ease; }
+.form-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(168, 149, 114, 0.15); }
+.form-input::placeholder { color: var(--ink-faint); }
+.form-checkbox { display: flex; align-items: flex-start; gap: 0.6em; cursor: pointer; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.6; }
+.form-checkbox input[type="checkbox"] { width: 18px; height: 18px; margin-top: 0.2em; accent-color: var(--gold); cursor: pointer; flex-shrink: 0; }
+.btn-danger { display: inline-flex; align-items: center; justify-content: center; padding: 0.75em 2em; border-radius: 10px; background: #dc2626; color: #fff; font-family: inherit; font-size: 0.95rem; font-weight: 500; border: none; cursor: pointer; transition: background 400ms ease, transform 400ms ease, opacity 400ms ease; }
+.btn-danger:hover:not(:disabled) { background: #b91c1c; transform: translateY(-1px); }
+.btn-danger:disabled { opacity: 0.45; cursor: not-allowed; }
+.status-icon { font-size: 3rem; margin-bottom: 1em; }
+@media (max-width: 640px) { .legal-prose table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; } .legal-prose th, .legal-prose td { padding: 0.5em 0.7em; font-size: 0.82rem; white-space: nowrap; } }
+.faq-item { border-bottom: 1px solid var(--hairline-soft); }
+.faq-question { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 1.2em 0; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; font-size: 1rem; font-weight: 500; color: var(--ink); transition: color 400ms ease; }
+.faq-question:hover { color: var(--gold); }
+.faq-question svg { flex-shrink: 0; transition: transform 400ms ease; }
+.faq-question[aria-expanded="true"] svg { transform: rotate(180deg); }
+.faq-answer { overflow: hidden; transition: max-height 500ms ease, opacity 400ms ease; }
+.faq-answer-inner { padding: 0 0 1.4em; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.9; }
+.success-card { padding: 2em; border-radius: 14px; background: var(--paper-warm); border: 1px solid var(--hairline-soft); text-align: center; }
