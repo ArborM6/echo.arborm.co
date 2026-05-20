@@ -18,7 +18,7 @@ export function DeleteAccount() {
     if (!canSubmit) return;
     setLoading(true);
     try {
-      await fetch(apiUrl('/api/delete-account/request'), {
+      await fetch(apiUrl('/api/v1/delete-account/request'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim() }),

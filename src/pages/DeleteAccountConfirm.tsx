@@ -16,7 +16,7 @@ export function DeleteAccountConfirm() {
       setStatus('error');
       return;
     }
-    fetch(apiUrl('/api/delete-account/confirm'), {
+    fetch(apiUrl('/api/v1/delete-account/confirm'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token }),
