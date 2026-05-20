@@ -2,6 +2,7 @@ import React from 'react';
 import './index.css';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { App } from './App';
 import { LanguageProvider } from './i18n';
 // Apply saved theme before first paint to avoid flash
@@ -15,6 +16,7 @@ render(
   <BrowserRouter>
     <LanguageProvider>
       <App />
+      <Analytics />
     </LanguageProvider>
   </BrowserRouter>,
   document.getElementById('root')
