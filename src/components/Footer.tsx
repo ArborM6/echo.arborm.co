@@ -1,7 +1,6 @@
 import React from 'react';
 import { Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { MountainDivider } from './MountainDivider';
 import { useLanguage } from '../i18n';
 export function Footer() {
   const { t } = useLanguage();

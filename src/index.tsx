@@ -12,7 +12,9 @@ try {
   if (saved === 'dark' || saved === 'light') {
     document.documentElement.setAttribute('data-theme', saved);
   }
-} catch {}
+} catch {
+  // Continue with the default theme when local storage is unavailable.
+}
 render(
   <BrowserRouter>
     <LanguageProvider>

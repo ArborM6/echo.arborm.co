@@ -15,7 +15,9 @@ export function ThemeToggle() {
     document.documentElement.setAttribute('data-theme', theme);
     try {
       window.localStorage.setItem('echo-theme', theme);
-    } catch {}
+    } catch {
+      // Local storage may be unavailable in restricted browser contexts.
+    }
   }, [theme]);
   const toggle = () => setTheme((t) => t === 'light' ? 'dark' : 'light');
   const isDark = theme === 'dark';

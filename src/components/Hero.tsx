@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
-import { Apple } from 'lucide-react';
+import { Apple, Download } from 'lucide-react';
 import { InkBackground } from './InkBackground';
 import { PhoneMockup } from './PhoneMockup';
 import { useLanguage } from '../i18n';
@@ -133,54 +133,59 @@ export function Hero() {
                 delay: 1.7,
                 ease: 'easeOut'
               }}
-              className="mt-10 flex flex-wrap items-center gap-4"
+              className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[540px]"
               id="download">
               
-              <button
-                type="button"
-                disabled
-                aria-label={t('hero.ios_aria')}
-                className="pill-ghost inline-flex items-center justify-center gap-2 w-[260px] h-12 px-8 rounded-full font-song text-sm cursor-not-allowed whitespace-nowrap"
-                style={{
-                  opacity: 0.78
-                }}>
-                
-                <Apple className="w-4 h-4 flex-shrink-0" strokeWidth={1.6} />
-                <span className="whitespace-nowrap">{t('hero.ios_label')}</span>
-                <span
-                  className="ml-1 inline-flex items-center px-2 py-[1px] rounded-full text-[10px] tracking-[0.25em] font-sans-cn whitespace-nowrap flex-shrink-0"
-                  style={{
-                    color: '#A89572',
-                    background: 'rgba(168,149,114,0.12)',
-                    border: '1px solid rgba(168,149,114,0.3)'
-                  }}>
+              <div className="flex flex-col gap-2">
+                <button
+                  type="button"
+                  disabled
+                  aria-label={t('hero.ios_aria')}
+                  className="pill-ghost inline-flex items-center gap-3 w-full h-14 px-5 rounded-2xl cursor-not-allowed text-left"
+                  style={{ opacity: 0.72 }}>
                   
-                  {t('hero.coming_soon')}
-                </span>
-              </button>
+                  <Apple className="w-5 h-5 flex-shrink-0" strokeWidth={1.5} />
+                  <span className="min-w-0 flex-1">
+                    <span className="block font-sans-cn text-[10px] tracking-[0.18em] ink-faint">
+                      {t('hero.ios_label')}
+                    </span>
+                    <span className="block font-song text-sm">{t('hero.app_store_label')}</span>
+                  </span>
+                  <span className="font-sans-cn text-[10px] tracking-wider ink-faint">
+                    {t('hero.coming_soon')}
+                  </span>
+                </button>
+              </div>
 
-              <button
-                type="button"
-                disabled
-                aria-label={t('hero.android_aria')}
-                className="pill-ghost inline-flex items-center justify-center gap-2 w-[260px] h-12 px-8 rounded-full font-song text-sm cursor-not-allowed whitespace-nowrap"
-                style={{
-                  opacity: 0.78
-                }}>
-                
-                <AndroidIcon className="w-4 h-4 flex-shrink-0" />
-                <span className="whitespace-nowrap">{t('hero.android_label')}</span>
-                <span
-                  className="ml-1 inline-flex items-center px-2 py-[1px] rounded-full text-[10px] tracking-[0.25em] font-sans-cn whitespace-nowrap flex-shrink-0"
-                  style={{
-                    color: '#A89572',
-                    background: 'rgba(168,149,114,0.12)',
-                    border: '1px solid rgba(168,149,114,0.3)'
-                  }}>
+              <div className="flex flex-col gap-2">
+                <button
+                  type="button"
+                  disabled
+                  aria-label={t('hero.android_aria')}
+                  className="pill-ghost inline-flex items-center gap-3 w-full h-14 px-5 rounded-2xl cursor-not-allowed text-left"
+                  style={{ opacity: 0.72 }}>
+                  <AndroidIcon className="w-5 h-5 flex-shrink-0" />
+                  <span className="min-w-0 flex-1">
+                    <span className="block font-sans-cn text-[10px] tracking-[0.18em] ink-faint">
+                      {t('hero.android_label')}
+                    </span>
+                    <span className="block font-song text-sm">{t('hero.google_play_label')}</span>
+                  </span>
+                  <span className="font-sans-cn text-[10px] tracking-wider ink-faint">
+                    {t('hero.coming_soon')}
+                  </span>
+                </button>
+                <a
+                  href="https://echo-static.arborm.co/echo-app-release.apk"
+                  aria-label={t('hero.android_apk_aria')}
+                  className="pill-ghost inline-flex items-center justify-center gap-2 w-full h-10 px-5 rounded-xl font-sans-cn text-xs tracking-wider">
                   
-                  {t('hero.coming_soon')}
-                </span>
-              </button>
+                  <Download className="w-3.5 h-3.5" strokeWidth={1.8} />
+                  <span>{t('hero.android_apk_download')}</span>
+                  <span className="opacity-60">·</span>
+                  <span className="opacity-75">{t('hero.download_now')}</span>
+                </a>
+              </div>
             </motion.div>
 
             <motion.div

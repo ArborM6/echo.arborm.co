@@ -13,7 +13,9 @@ function detectBrowserLocale(): Locale {
       if (l === 'zh-cn' || l === 'zh-hans' || l.startsWith('zh-hans') || l === 'zh') return 'zh-CN';
       if (l.startsWith('en')) return 'en';
     }
-  } catch {}
+  } catch {
+    // Fall back when browser language detection is unavailable.
+  }
   return 'zh-CN';
 }
 
@@ -22,7 +24,9 @@ function getInitialLocale(): Locale {
   try {
     const saved = window.localStorage.getItem(STORAGE_KEY) as Locale | null;
     if (saved === 'zh-CN' || saved === 'zh-TW' || saved === 'en') return saved;
-  } catch {}
+  } catch {
+    // Fall back when local storage is unavailable.
+  }
   return detectBrowserLocale();
 }
 
@@ -34,7 +38,7 @@ type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue>({
   locale: 'zh-CN',
-  setLocale: () => {},
+  setLocale: () => undefined,
   t: (k) => k,
 });
 
@@ -48,7 +52,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   const setLocale = useCallback((l: Locale) => {
     setLocaleState(l);
-    try { window.localStorage.setItem(STORAGE_KEY, l); } catch {}
+    try {
+      window.localStorage.setItem(STORAGE_KEY, l);
+    } catch {
+      // Continue with in-memory language state when persistence fails.
+    }
   }, []);
 
   useEffect(() => {
