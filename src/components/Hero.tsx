@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { motion, useScroll } from 'framer-motion';
-import { Apple, Download } from 'lucide-react';
+import { useScroll } from 'framer-motion';
+import { Apple, ArrowUpRight, Download, Globe } from 'lucide-react';
 import { InkBackground } from './InkBackground';
 import { PhoneMockup } from './PhoneMockup';
 import { useLanguage } from '../i18n';
@@ -34,14 +34,7 @@ export function Hero() {
     target: ref,
     offset: ['start start', 'end start']
   });
-  const { t, locale } = useLanguage();
-
-  // For animation: Chinese uses char-by-char, English uses word-by-word
-  const titleText = t('hero.title');
-  const isEnglish = locale === 'en';
-  const titleUnits = isEnglish
-    ? titleText.split(/(\s+)/).filter(Boolean) // split by whitespace, keep spaces
-    : titleText.split('');
+  const { t } = useLanguage();
 
   return (
     <section
@@ -54,88 +47,26 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
           {/* text */}
           <div className="lg:col-span-7 z-10 lg:pl-16 xl:pl-24">
-            <motion.p
-              initial={{
-                opacity: 0,
-                y: 8
-              }}
-              animate={{
-                opacity: 1,
-                y: 0
-              }}
-              transition={{
-                duration: 1.2,
-                delay: 0.2,
-                ease: 'easeOut'
-              }}
-              className="font-sans-cn text-xs tracking-[0.4em] ink-faint mb-6">
+            <p className="font-sans-cn text-xs tracking-[0.4em] ink-faint mb-6">
               
               {t('hero.subtitle')}
-            </motion.p>
+            </p>
 
             <h1 className="font-song font-medium ink-text text-[2.4rem] sm:text-5xl md:text-6xl leading-[1.35] tracking-wide">
-              {titleUnits.map((c, i) =>
-              <motion.span
-                key={i}
-                initial={{
-                  opacity: 0,
-                  y: 14
-                }}
-                animate={{
-                  opacity: 0.92,
-                  y: 0
-                }}
-                transition={{
-                  duration: 1.1,
-                  delay: 0.4 + i * (isEnglish ? 0.08 : 0.06),
-                  ease: 'easeOut'
-                }}
-                className="inline-block"
-                style={c.trim() === '' ? { whiteSpace: 'pre' } : undefined}>
-                
-                  {c}
-                </motion.span>
-              )}
+              {t('hero.title')}
             </h1>
 
-            <motion.p
-              initial={{
-                opacity: 0,
-                y: 10
-              }}
-              animate={{
-                opacity: 1,
-                y: 0
-              }}
-              transition={{
-                duration: 1.4,
-                delay: 1.4,
-                ease: 'easeOut'
-              }}
-              className="mt-8 font-song text-[15px] md:text-base leading-[2] ink-soft max-w-xl">
+            <p className="mt-8 font-song text-[15px] md:text-base leading-[2] ink-soft max-w-xl">
               
               {t('hero.desc_1')}
               <br className="hidden md:block" />
               {t('hero.desc_2')}
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 10
-              }}
-              animate={{
-                opacity: 1,
-                y: 0
-              }}
-              transition={{
-                duration: 1.4,
-                delay: 1.7,
-                ease: 'easeOut'
-              }}
-              className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[540px]"
+            <div
+              className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-[720px]"
               id="download">
-              
+
               <div className="flex flex-col gap-2">
                 <button
                   type="button"
@@ -145,11 +76,8 @@ export function Hero() {
                   style={{ opacity: 0.72 }}>
                   
                   <Apple className="w-5 h-5 flex-shrink-0" strokeWidth={1.5} />
-                  <span className="min-w-0 flex-1">
-                    <span className="block font-sans-cn text-[10px] tracking-[0.18em] ink-faint">
-                      {t('hero.ios_label')}
-                    </span>
-                    <span className="block font-song text-sm">{t('hero.app_store_label')}</span>
+                  <span className="min-w-0 flex-1 font-song text-base">
+                    {t('hero.ios_label')}
                   </span>
                   <span className="font-sans-cn text-[10px] tracking-wider ink-faint">
                     {t('hero.coming_soon')}
@@ -157,89 +85,73 @@ export function Hero() {
                 </button>
               </div>
 
-              <div className="flex flex-col gap-2">
+              <div className="android-download-menu relative">
                 <button
                   type="button"
-                  disabled
                   aria-label={t('hero.android_aria')}
-                  className="pill-ghost inline-flex items-center gap-3 w-full h-14 px-5 rounded-2xl cursor-not-allowed text-left"
+                  className="pill-ghost inline-flex items-center gap-3 w-full h-14 px-5 rounded-2xl cursor-pointer text-left"
                   style={{ opacity: 0.72 }}>
                   <AndroidIcon className="w-5 h-5 flex-shrink-0" />
-                  <span className="min-w-0 flex-1">
-                    <span className="block font-sans-cn text-[10px] tracking-[0.18em] ink-faint">
-                      {t('hero.android_label')}
-                    </span>
-                    <span className="block font-song text-sm">{t('hero.google_play_label')}</span>
-                  </span>
-                  <span className="font-sans-cn text-[10px] tracking-wider ink-faint">
-                    {t('hero.coming_soon')}
+                  <span className="min-w-0 flex-1 font-song text-base">
+                    {t('hero.android_label')}
                   </span>
                 </button>
-                <a
-                  href="https://echo-static.arborm.co/echo-app-release.apk"
-                  aria-label={t('hero.android_apk_aria')}
-                  className="pill-ghost inline-flex items-center justify-center gap-2 w-full h-10 px-5 rounded-xl font-sans-cn text-xs tracking-wider">
-                  
-                  <Download className="w-3.5 h-3.5" strokeWidth={1.8} />
-                  <span>{t('hero.android_apk_download')}</span>
-                  <span className="opacity-60">·</span>
-                  <span className="opacity-75">{t('hero.download_now')}</span>
-                </a>
+                <div className="android-download-options absolute left-0 right-0 top-full z-30 pt-2">
+                  <div className="frosted-paper overflow-hidden rounded-2xl p-1.5 shadow-lg">
+                    <div className="flex h-11 items-center gap-2.5 rounded-xl px-3 font-sans-cn text-xs ink-faint">
+                      <AndroidIcon className="w-4 h-4 flex-shrink-0" />
+                      <span className="flex-1">{t('hero.google_play_label')}</span>
+                      <span className="text-[9px] tracking-wider">{t('hero.coming_soon')}</span>
+                    </div>
+                    <a
+                      href="https://echo-static.arborm.co/echo-app-release.apk"
+                      aria-label={t('hero.android_apk_aria')}
+                      className="flex h-11 items-center gap-2.5 rounded-xl px-3 font-sans-cn text-xs transition-colors hover:bg-black/5 dark:hover:bg-white/10">
+                      <Download className="w-4 h-4 flex-shrink-0" strokeWidth={1.8} />
+                      <span className="flex-1">{t('hero.android_apk_download')}</span>
+                      <span className="text-[9px] tracking-wider opacity-60">{t('hero.download_now')}</span>
+                    </a>
+                  </div>
+                </div>
               </div>
-            </motion.div>
 
-            <motion.div
-              initial={{
-                opacity: 0
-              }}
-              animate={{
-                opacity: 1
-              }}
-              transition={{
-                duration: 2,
-                delay: 2.2
-              }}
-              className="mt-10 flex items-center gap-4 ink-faint font-sans-cn text-[11px] tracking-widest">
+              <a
+                href="https://echoweb.arborm.co/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t('hero.web_aria')}
+                className="pill-ghost inline-flex items-center gap-3 w-full h-14 px-5 rounded-2xl text-left"
+                style={{ opacity: 0.72 }}>
+                <Globe className="w-5 h-5 flex-shrink-0" strokeWidth={1.5} />
+                <span className="min-w-0 flex-1">
+                  <span className="block font-sans-cn text-[10px] tracking-[0.18em] ink-faint">
+                    {t('hero.web_label')}
+                  </span>
+                  <span className="block font-song text-sm">{t('hero.web_cta')}</span>
+                </span>
+                <ArrowUpRight className="w-4 h-4 flex-shrink-0 opacity-70" strokeWidth={1.5} />
+              </a>
+            </div>
+
+            <div className="mt-10 flex items-center gap-4 ink-faint font-sans-cn text-[11px] tracking-widest">
               
               <span>{t('hero.tag_chinese')}</span>
               <span className="w-px h-3 bg-current opacity-30" />
               <span>{t('hero.tag_no_ads')}</span>
-            </motion.div>
+            </div>
           </div>
 
           {/* phone */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 30
-            }}
-            animate={{
-              opacity: 1,
-              y: 0
-            }}
-            transition={{
-              duration: 1.6,
-              delay: 0.8,
-              ease: 'easeOut'
-            }}
-            className="lg:col-span-5 flex justify-center lg:justify-end relative z-10">
+          <div className="lg:col-span-5 flex justify-center lg:justify-end lg:-translate-x-[58px] xl:-translate-x-[74px] relative z-10">
             
-            <motion.div
-              animate={{
-                y: [0, -6, 0]
-              }}
-              transition={{
-                duration: 8,
-                ease: 'easeInOut',
-                repeat: Infinity
-              }}>
+            <div>
               
               <PhoneMockup
                 imageSrc="/image.png"
                 imageAlt="回响 - 白色主题" />
               
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
 
