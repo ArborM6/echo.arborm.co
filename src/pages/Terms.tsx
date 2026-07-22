@@ -63,7 +63,7 @@ export function Terms() {
       <h2>{t('terms.s9_title')}</h2>
       <p>
         {t('terms.s9_email')}{' '}
-        <a href="mailto:support@arborm.co">support@arborm.co</a>
+        <a href="mailto:hello@arborm.com">hello@arborm.com</a>
       </p>
     </LegalLayout>
   );

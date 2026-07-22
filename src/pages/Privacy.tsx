@@ -106,7 +106,7 @@ export function Privacy() {
       <p>{t('privacy.s8_content')}</p>
       <p>
         {t('privacy.s8_email')}{' '}
-        <a href="mailto:support@arborm.co">support@arborm.co</a>
+        <a href="mailto:hello@arborm.com">hello@arborm.com</a>
       </p>
       <p>{t('privacy.s8_address')}</p>
     </LegalLayout>

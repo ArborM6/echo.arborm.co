@@ -53,7 +53,7 @@ export function Support() {
       <h2>{t('support.contact_title')}</h2>
       <p>{t('support.contact_desc')}</p>
       <p>
-        <a href="mailto:support@arborm.co">
+        <a href="mailto:hello@arborm.com">
           <Mail className="inline w-4 h-4 mr-1" style={{ verticalAlign: '-2px' }} />
           {t('support.contact_email')}
         </a>
