@@ -4,6 +4,8 @@ import { useLanguage } from '../i18n';
 
 export function Privacy() {
   const { t } = useLanguage();
+  const processors = Array.from({ length: 13 }, (_, index) => index + 1);
+
   return (
     <LegalLayout
       title={t('privacy.title')}
@@ -23,6 +25,7 @@ export function Privacy() {
       </ul>
 
       <h3>{t('privacy.s1_2_title')}</h3>
+      <p>{t('privacy.s1_2_consent')}</p>
       <ul>
         <li>{t('privacy.s1_2_device')}</li>
         <li>{t('privacy.s1_2_status')}</li>
@@ -35,6 +38,7 @@ export function Privacy() {
         <li>{t('privacy.s1_3_records')}</li>
         <li>{t('privacy.s1_3_prefs')}</li>
         <li>{t('privacy.s1_3_sub')}</li>
+        <li>{t('privacy.s1_3_reports')}</li>
       </ul>
 
       <h2>{t('privacy.s2_title')}</h2>
@@ -43,6 +47,8 @@ export function Privacy() {
         <li>{t('privacy.s2_push')}</li>
         <li>{t('privacy.s2_security')}</li>
         <li>{t('privacy.s2_improve')}</li>
+        <li>{t('privacy.s2_billing')}</li>
+        <li>{t('privacy.s2_moderation')}</li>
       </ul>
       <p>{t('privacy.s2_not')}</p>
 
@@ -51,6 +57,17 @@ export function Privacy() {
         <li>{t('privacy.s3_storage')}</li>
         <li>{t('privacy.s3_password')}</li>
         <li>{t('privacy.s3_ai')}</li>
+        <li>{t('privacy.s3_local')}</li>
+      </ul>
+
+      <h3>{t('privacy.s3_retention_title')}</h3>
+      <ul>
+        <li>{t('privacy.s3_retention_account')}</li>
+        <li>{t('privacy.s3_retention_trash')}</li>
+        <li>{t('privacy.s3_retention_device')}</li>
+        <li>{t('privacy.s3_retention_delete')}</li>
+        <li>{t('privacy.s3_retention_reports')}</li>
+        <li>{t('privacy.s3_retention_providers')}</li>
       </ul>
 
       <h2>{t('privacy.s4_title')}</h2>
@@ -65,24 +82,22 @@ export function Privacy() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{t('privacy.s4_row1_party')}</td>
-            <td>{t('privacy.s4_row1_data')}</td>
-            <td>{t('privacy.s4_row1_purpose')}</td>
-            <td><a href={t('privacy.s4_row1_policy_url')} target="_blank" rel="noopener noreferrer">{t('privacy.s4_row1_policy_url')}</a></td>
-          </tr>
-          <tr>
-            <td>{t('privacy.s4_row2_party')}</td>
-            <td>{t('privacy.s4_row2_data')}</td>
-            <td>{t('privacy.s4_row2_purpose')}</td>
-            <td><a href={t('privacy.s4_row2_policy_url')} target="_blank" rel="noopener noreferrer">{t('privacy.s4_row2_policy_url')}</a></td>
-          </tr>
-          <tr>
-            <td>{t('privacy.s4_row3_party')}</td>
-            <td>{t('privacy.s4_row3_data')}</td>
-            <td>{t('privacy.s4_row3_purpose')}</td>
-            <td><a href={t('privacy.s4_row3_policy_url')} target="_blank" rel="noopener noreferrer">{t('privacy.s4_row3_policy_url')}</a></td>
-          </tr>
+          {processors.map((row) => {
+            const key = `privacy.s4_row${row}`;
+            const policyUrl = t(`${key}_policy_url`);
+            return (
+              <tr key={row}>
+                <td>{t(`${key}_party`)}</td>
+                <td>{t(`${key}_data`)}</td>
+                <td>{t(`${key}_purpose`)}</td>
+                <td>
+                  <a href={policyUrl} target="_blank" rel="noopener noreferrer">
+                    {policyUrl}
+                  </a>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
       <p>{t('privacy.s4_outro')}</p>
@@ -106,7 +121,7 @@ export function Privacy() {
       <p>{t('privacy.s8_content')}</p>
       <p>
         {t('privacy.s8_email')}{' '}
-        <a href="mailto:hello@arborm.com">hello@arborm.com</a>
+        <a href="mailto:support@arborm.co">support@arborm.co</a>
       </p>
       <p>{t('privacy.s8_address')}</p>
     </LegalLayout>

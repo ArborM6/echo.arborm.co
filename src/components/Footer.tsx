@@ -77,11 +77,11 @@ export function Footer() {
                 {t('footer.contact')}
               </p>
               <a
-                href="mailto:hello@arborm.com"
+                href="mailto:support@arborm.co"
                 className="inline-flex items-center gap-2 font-song text-[14px] ink-soft hover:ink-text transition-colors duration-500">
                 
                 <Mail className="w-4 h-4" strokeWidth={1.4} />
-                hello@arborm.com
+                support@arborm.co
               </a>
             </div>
             <div>
