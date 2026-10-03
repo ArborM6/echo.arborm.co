@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { apiUrl } from '../api';
+import { DeletionRequestError, requestAccountDeletion } from '../deleteAccountRequest';
 import { LegalLayout } from '../components/LegalLayout';
 import { useLanguage } from '../i18n';
 
@@ -10,23 +11,22 @@ export function DeleteAccount() {
   const [confirmed, setConfirmed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const canSubmit = email.trim().length > 0 && confirmed && !loading;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!canSubmit) return;
     setLoading(true);
+    setError(null);
     try {
-      await fetch(apiUrl('/api/v1/delete-account/request'), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim() }),
-      });
+      await requestAccountDeletion(apiUrl('/api/v1/delete-account/request'), email);
       setSuccess(true);
-    } catch {
-      // still show success to avoid leaking whether email exists
-      setSuccess(true);
+    } catch (cause) {
+      setError(t(cause instanceof DeletionRequestError && cause.status === 429
+        ? 'delete.rate_limited'
+        : 'delete.request_failed'));
     } finally {
       setLoading(false);
     }
@@ -51,7 +51,7 @@ export function DeleteAccount() {
             </ul>
           </div>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} aria-busy={loading}>
             <div style={{ marginBottom: '1.4em' }}>
               <input
                 type="email"
@@ -60,6 +60,7 @@ export function DeleteAccount() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                disabled={loading}
               />
             </div>
 
@@ -68,12 +69,14 @@ export function DeleteAccount() {
                 type="checkbox"
                 checked={confirmed}
                 onChange={(e) => setConfirmed(e.target.checked)}
+                disabled={loading}
               />
               <span>{t('delete.checkbox_label')}</span>
             </label>
 
+            {error && <div className="callout-danger" role="alert"><p>{error}</p></div>}
             <button type="submit" className="btn-danger" disabled={!canSubmit}>
-              {t('delete.submit_btn')}
+              {t(loading ? 'delete.submitting' : 'delete.submit_btn')}
             </button>
           </form>
         </>

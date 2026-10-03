@@ -307,10 +307,13 @@ const zhCN: Record<string, string> = {
   'delete.email_placeholder': '你的 Echo 注册邮箱',
   'delete.checkbox_label': '我已了解，确认要删除我的账号',
   'delete.submit_btn': '发送确认邮件',
+  'delete.submitting': '正在发送…',
+  'delete.request_failed': '申请未能完成。请检查网络后重试，或联系 support@arborm.co。',
+  'delete.rate_limited': '操作过于频繁，请稍后再试。',
   'delete.success_msg': '如果该邮箱对应一个 Echo 账号，我们已向其发送删除确认邮件，请在 24 小时内点击邮件中的链接完成删除。',
   'delete.confirm_loading': '正在删除你的账号，请稍候...',
   'delete.confirm_success': '✓ 你的账号已永久删除。感谢使用 Echo。',
-  'delete.confirm_error': '× 链接已失效或已被使用，请回到 /delete-account 重新发起。',
+  'delete.confirm_error': '× 未能确认删除。请检查网络；若链接已失效或已使用，请重新发起申请。',
   'delete.confirm_back': '返回重新发起',
 
   // ===== Legal section labels =====
@@ -625,10 +628,13 @@ const zhTW: Record<string, string> = {
   'delete.email_placeholder': '你的 Echo 註冊電子郵件',
   'delete.checkbox_label': '我已了解，確認要刪除我的帳號',
   'delete.submit_btn': '寄送確認信',
+  'delete.submitting': '正在寄送…',
+  'delete.request_failed': '申請未能完成。請檢查網路後重試，或聯絡 support@arborm.co。',
+  'delete.rate_limited': '操作過於頻繁，請稍後再試。',
   'delete.success_msg': '如果該電子郵件對應一個 Echo 帳號，我們已向其寄送刪除確認信，請於 24 小時內點擊信中連結完成刪除。',
   'delete.confirm_loading': '正在刪除你的帳號，請稍候...',
   'delete.confirm_success': '✓ 你的帳號已永久刪除。感謝使用 Echo。',
-  'delete.confirm_error': '× 連結已失效或已被使用，請回到 /delete-account 重新發起。',
+  'delete.confirm_error': '× 未能確認刪除。請檢查網路；若連結已失效或已使用，請重新提出申請。',
   'delete.confirm_back': '返回重新發起',
 
   // ===== Legal section labels =====
@@ -943,10 +949,13 @@ const en: Record<string, string> = {
   'delete.email_placeholder': 'Your Echo registered email',
   'delete.checkbox_label': 'I understand and confirm I want to delete my account',
   'delete.submit_btn': 'Send confirmation email',
+  'delete.submitting': 'Sending…',
+  'delete.request_failed': 'Your request could not be completed. Check your connection and try again, or contact support@arborm.co.',
+  'delete.rate_limited': 'Too many requests. Please wait and try again.',
   'delete.success_msg': 'If this email corresponds to an Echo account, we have sent a deletion confirmation email. Please click the link in that email within 24 hours to complete deletion.',
   'delete.confirm_loading': 'Deleting your account, please wait\u2026',
   'delete.confirm_success': '\u2713 Your account has been permanently deleted. Thanks for using Echo.',
-  'delete.confirm_error': '\u00d7 This link is invalid or has already been used. Please return to /delete-account and try again.',
+  'delete.confirm_error': '\u00d7 Could not confirm deletion. Check your connection. If the link has expired or was already used, submit a new request.',
   'delete.confirm_back': 'Back to delete account',
 
   // ===== Legal section labels =====

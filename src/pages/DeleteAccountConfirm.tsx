@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { apiUrl } from '../api';
+import { confirmAccountDeletion } from '../deleteAccountRequest';
 import { LegalLayout } from '../components/LegalLayout';
 import { useLanguage } from '../i18n';
 
@@ -16,13 +17,9 @@ export function DeleteAccountConfirm() {
       setStatus('error');
       return;
     }
-    fetch(apiUrl('/api/v1/delete-account/confirm'), {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token }),
-    })
-      .then((res) => {
-        setStatus(res.ok ? 'success' : 'error');
+    confirmAccountDeletion(apiUrl('/api/v1/delete-account/confirm'), token)
+      .then(() => {
+        setStatus('success');
       })
       .catch(() => {
         setStatus('error');
