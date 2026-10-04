@@ -70,6 +70,8 @@ export function Privacy() {
         <li>{t('privacy.s3_retention_delete')}</li>
         <li>{t('privacy.s3_retention_reports')}</li>
         <li>{t('privacy.s3_retention_providers')}</li>
+        <li>{t('privacy.s3_retention_gemini')}</li>
+        <li>{t('privacy.s3_retention_fal')}</li>
       </ul>
 
       <h2>{t('privacy.s4_title')}</h2>
