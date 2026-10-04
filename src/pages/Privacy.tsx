@@ -39,6 +39,8 @@ export function Privacy() {
         <li>{t('privacy.s1_3_prefs')}</li>
         <li>{t('privacy.s1_3_sub')}</li>
         <li>{t('privacy.s1_3_reports')}</li>
+        <li>{t('privacy.s1_3_consent_records')}</li>
+        <li>{t('privacy.s1_3_diagnostics')}</li>
       </ul>
 
       <h2>{t('privacy.s2_title')}</h2>
