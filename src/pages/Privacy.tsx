@@ -4,7 +4,7 @@ import { useLanguage } from '../i18n';
 
 export function Privacy() {
   const { t } = useLanguage();
-  const processors = Array.from({ length: 13 }, (_, index) => index + 1);
+  const processors = Array.from({ length: 14 }, (_, index) => index + 1);
 
   return (
     <LegalLayout
@@ -95,9 +95,13 @@ export function Privacy() {
                 <td>{t(`${key}_data`)}</td>
                 <td>{t(`${key}_purpose`)}</td>
                 <td>
-                  <a href={policyUrl} target="_blank" rel="noopener noreferrer">
-                    {policyUrl}
-                  </a>
+                  {policyUrl ? (
+                    <a href={policyUrl} target="_blank" rel="noopener noreferrer">
+                      {policyUrl}
+                    </a>
+                  ) : (
+                    t(`${key}_policy_note`)
+                  )}
                 </td>
               </tr>
             );
