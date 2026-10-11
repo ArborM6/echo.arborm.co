@@ -8,16 +8,11 @@ export function Subscription() {
   const [open, setOpen] = useState(false);
   const { t } = useLanguage();
 
-  const perks = [t('sub.perk1'), t('sub.perk2'), t('sub.perk3'), t('sub.perk4')];
+  const perks = [t('sub.perk1'), t('sub.perk2')];
 
   const rows = [
-  { feature: t('sub.row_schedule'), free: '✓', pro: '✓' },
-  { feature: t('sub.row_theme'), free: t('sub.val_basic'), pro: t('sub.val_all') },
-  { feature: t('sub.row_font'), free: t('sub.val_basic'), pro: t('sub.val_all') },
-  { feature: t('sub.row_style'), free: t('sub.val_basic'), pro: t('sub.val_all') },
-  { feature: t('sub.row_image'), free: t('sub.val_no_image'), pro: t('sub.val_all') },
-  { feature: t('sub.row_manual'), free: t('sub.val_1'), pro: t('sub.val_3') },
-  { feature: t('sub.row_avatar'), free: '—', pro: '✓' }];
+  { feature: t('sub.row_image'), free: t('sub.val_no_image'), pro: '✓' },
+  { feature: t('sub.row_manual'), free: t('sub.val_1'), pro: t('sub.val_3') }];
 
   return (
     <section
