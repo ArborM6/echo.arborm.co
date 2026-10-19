@@ -4,7 +4,7 @@ import { useLanguage } from '../i18n';
 
 export function Privacy() {
   const { t } = useLanguage();
-  const processors = Array.from({ length: 14 }, (_, index) => index + 1);
+  const processors = Array.from({ length: 13 }, (_, index) => index + 1);
 
   return (
     <LegalLayout
