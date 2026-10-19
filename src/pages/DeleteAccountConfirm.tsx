@@ -6,6 +6,8 @@ import { confirmAccountDeletion } from '../deleteAccountRequest';
 import { LegalLayout } from '../components/LegalLayout';
 import { useLanguage } from '../i18n';
 
+const GOOGLE_PLAY_SUBSCRIPTIONS_URL = 'https://play.google.com/store/account/subscriptions';
+
 export function DeleteAccountConfirm() {
   const { t } = useLanguage();
   const [searchParams] = useSearchParams();
@@ -49,6 +51,17 @@ export function DeleteAccountConfirm() {
           <>
             <div className="status-icon">✅</div>
             <p>{t('delete.confirm_success')}</p>
+            <p style={{ marginTop: '1em' }}>{t('delete.confirm_subscription_note')}</p>
+            <p style={{ marginTop: '1em' }}>
+              <a
+                href={GOOGLE_PLAY_SUBSCRIPTIONS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'var(--gold)' }}
+              >
+                {t('delete.subscription_link')}
+              </a>
+            </p>
           </>
         )}
         {status === 'error' && (

@@ -5,6 +5,8 @@ import { DeletionRequestError, requestAccountDeletion } from '../deleteAccountRe
 import { LegalLayout } from '../components/LegalLayout';
 import { useLanguage } from '../i18n';
 
+const GOOGLE_PLAY_SUBSCRIPTIONS_URL = 'https://play.google.com/store/account/subscriptions';
+
 export function DeleteAccount() {
   const { t } = useLanguage();
   const [email, setEmail] = useState('');
@@ -49,6 +51,18 @@ export function DeleteAccount() {
               <li>{t('delete.warning_4')}</li>
               <li>{t('delete.warning_5')}</li>
             </ul>
+          </div>
+
+          <div className="callout-danger">
+            <p>{t('delete.subscription_notice')}</p>
+            <a
+              href={GOOGLE_PLAY_SUBSCRIPTIONS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: 'var(--gold)' }}
+            >
+              {t('delete.subscription_link')}
+            </a>
           </div>
 
           <form onSubmit={handleSubmit} aria-busy={loading}>
