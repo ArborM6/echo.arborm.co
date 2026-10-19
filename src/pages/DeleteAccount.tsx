@@ -4,6 +4,7 @@ import { apiUrl } from '../api';
 import { DeletionRequestError, requestAccountDeletion } from '../deleteAccountRequest';
 import { LegalLayout } from '../components/LegalLayout';
 import { useLanguage } from '../i18n';
+import { splitIntoSentences } from '../sentences';
 
 const GOOGLE_PLAY_SUBSCRIPTIONS_URL = 'https://play.google.com/store/account/subscriptions';
 
@@ -54,7 +55,9 @@ export function DeleteAccount() {
           </div>
 
           <div className="callout-danger">
-            <p>{t('delete.subscription_notice')}</p>
+            {splitIntoSentences(t('delete.subscription_notice')).map((sentence, idx) => (
+              <p key={idx}>{sentence}</p>
+            ))}
             <a
               href={GOOGLE_PLAY_SUBSCRIPTIONS_URL}
               target="_blank"

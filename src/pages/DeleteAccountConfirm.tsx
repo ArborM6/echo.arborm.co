@@ -5,6 +5,7 @@ import { apiUrl } from '../api';
 import { confirmAccountDeletion } from '../deleteAccountRequest';
 import { LegalLayout } from '../components/LegalLayout';
 import { useLanguage } from '../i18n';
+import { splitIntoSentences } from '../sentences';
 
 const GOOGLE_PLAY_SUBSCRIPTIONS_URL = 'https://play.google.com/store/account/subscriptions';
 
@@ -51,7 +52,9 @@ export function DeleteAccountConfirm() {
           <>
             <div className="status-icon">✅</div>
             <p>{t('delete.confirm_success')}</p>
-            <p style={{ marginTop: '1em' }}>{t('delete.confirm_subscription_note')}</p>
+            {splitIntoSentences(t('delete.confirm_subscription_note')).map((sentence, idx) => (
+              <p key={idx} style={{ marginTop: '1em' }}>{sentence}</p>
+            ))}
             <p style={{ marginTop: '1em' }}>
               <a
                 href={GOOGLE_PLAY_SUBSCRIPTIONS_URL}
