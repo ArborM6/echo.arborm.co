@@ -25,6 +25,7 @@ export function Support() {
         t('support.a4_1'),
         t('support.a4_2'),
         t('support.a4_3'),
+        t('support.a4_4'),
       ],
     },
     {
@@ -38,7 +39,19 @@ export function Support() {
         ],
       },
     },
-    { q: t('support.q6'), a: t('support.a6') },
+    {
+      q: t('support.q6'),
+      a: {
+        intro: t('support.a6_intro'),
+        items: [
+          t('support.a6_1'),
+          t('support.a6_2'),
+          t('support.a6_3'),
+          t('support.a6_4'),
+          t('support.a6_5'),
+        ],
+      },
+    },
   ];
 
   const toggle = (i: number) => setOpenFaq(openFaq === i ? null : i);
@@ -78,7 +91,7 @@ export function Support() {
               <div
                 className="faq-answer"
                 style={{
-                  maxHeight: isOpen ? '600px' : '0px',
+                  maxHeight: isOpen ? '1400px' : '0px',
                   opacity: isOpen ? 1 : 0,
                 }}
               >
