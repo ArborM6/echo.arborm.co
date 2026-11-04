@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useScroll } from 'framer-motion';
-import { Apple, ArrowUpRight, Download, Globe } from 'lucide-react';
+import { Apple, ArrowUpRight, Globe } from 'lucide-react';
 import { InkBackground } from './InkBackground';
 import { PhoneMockup } from './PhoneMockup';
 import { useLanguage } from '../i18n';
@@ -85,35 +85,18 @@ export function Hero() {
                 </button>
               </div>
 
-              <div className="android-download-menu relative">
-                <button
-                  type="button"
-                  aria-label={t('hero.android_aria')}
-                  className="pill-ghost inline-flex items-center gap-3 w-full h-14 px-5 rounded-2xl cursor-pointer text-left"
-                  style={{ opacity: 0.72 }}>
-                  <AndroidIcon className="w-5 h-5 flex-shrink-0" />
-                  <span className="min-w-0 flex-1 font-song text-base">
-                    {t('hero.android_label')}
-                  </span>
-                </button>
-                <div className="android-download-options absolute left-0 right-0 top-full z-30 pt-2">
-                  <div className="frosted-paper overflow-hidden rounded-2xl p-1.5 shadow-lg">
-                    <div className="flex h-11 items-center gap-2.5 rounded-xl px-3 font-sans-cn text-xs ink-faint">
-                      <AndroidIcon className="w-4 h-4 flex-shrink-0" />
-                      <span className="flex-1">{t('hero.google_play_label')}</span>
-                      <span className="text-[9px] tracking-wider">{t('hero.coming_soon')}</span>
-                    </div>
-                    <a
-                      href="https://echo-static.arborm.co/echo-app-release.apk"
-                      aria-label={t('hero.android_apk_aria')}
-                      className="flex h-11 items-center gap-2.5 rounded-xl px-3 font-sans-cn text-xs transition-colors hover:bg-black/5 dark:hover:bg-white/10">
-                      <Download className="w-4 h-4 flex-shrink-0" strokeWidth={1.8} />
-                      <span className="flex-1">{t('hero.android_apk_download')}</span>
-                      <span className="text-[9px] tracking-wider opacity-60">{t('hero.download_now')}</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <a
+                href="https://play.google.com/store/apps/details?id=co.arborm.echo"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t('hero.android_aria')}
+                className="pill-ghost inline-flex items-center gap-3 w-full h-14 px-5 rounded-2xl text-left">
+                <AndroidIcon className="w-5 h-5 flex-shrink-0" />
+                <span className="min-w-0 flex-1 font-song text-base">
+                  {t('hero.android_label')}
+                </span>
+                <ArrowUpRight className="w-4 h-4 flex-shrink-0 opacity-70" strokeWidth={1.5} />
+              </a>
 
               <a
                 href="https://echoweb.arborm.co/"
