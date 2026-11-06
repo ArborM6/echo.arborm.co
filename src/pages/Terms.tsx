@@ -41,8 +41,21 @@ export function Terms() {
       <h2>{t('terms.s5_title')}</h2>
       <ul>
         <li>{t('terms.s5_iap')}</li>
-        <li>{t('terms.s5_refund')}</li>
+        <li>{t('terms.s5_price')}</li>
+        <li>{t('terms.s5_renewal')}</li>
         <li>{t('terms.s5_manage')}</li>
+        <li>
+          {t('terms.s5_manage_apple')}{' '}
+          <a href="https://apps.apple.com/account/subscriptions">Apple App Store</a>
+        </li>
+        <li>
+          {t('terms.s5_manage_google')}{' '}
+          <a href="https://play.google.com/store/account/subscriptions">Google Play</a>
+        </li>
+        <li>{t('terms.s5_expiry')}</li>
+        <li>{t('terms.s5_refund')}</li>
+        <li>{t('terms.s5_delete')}</li>
+        <li>{t('terms.s5_rights')}</li>
       </ul>
 
       <h2>{t('terms.s6_title')}</h2>
