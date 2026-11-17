@@ -37,11 +37,15 @@ export function Privacy() {
       <ul>
         <li>{t('privacy.s1_3_records')}</li>
         <li>{t('privacy.s1_3_prefs')}</li>
+        <li>{t('privacy.s1_3_moods')}</li>
         <li>{t('privacy.s1_3_sub')}</li>
         <li>{t('privacy.s1_3_reports')}</li>
         <li>{t('privacy.s1_3_consent_records')}</li>
         <li>{t('privacy.s1_3_diagnostics')}</li>
       </ul>
+
+      <h3>{t('privacy.s1_4_title')}</h3>
+      <p>{t('privacy.s1_4_guest')}</p>
 
       <h2>{t('privacy.s2_title')}</h2>
       <ul>
@@ -69,6 +73,7 @@ export function Privacy() {
         <li>{t('privacy.s3_retention_device')}</li>
         <li>{t('privacy.s3_retention_delete')}</li>
         <li>{t('privacy.s3_retention_reports')}</li>
+        <li>{t('privacy.s3_retention_moods')}</li>
         <li>{t('privacy.s3_retention_providers')}</li>
         <li>{t('privacy.s3_retention_gemini')}</li>
         <li>{t('privacy.s3_retention_fal')}</li>
@@ -95,7 +100,7 @@ export function Privacy() {
                 <td>{t(`${key}_data`)}</td>
                 <td>{t(`${key}_purpose`)}</td>
                 <td>
-                  {policyUrl ? (
+                  {policyUrl !== `${key}_policy_url` ? (
                     <a href={policyUrl} target="_blank" rel="noopener noreferrer">
                       {policyUrl}
                     </a>
