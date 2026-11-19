@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useScroll } from 'framer-motion';
-import { Apple, ArrowUpRight, Globe } from 'lucide-react';
+import { Apple, ArrowUpRight } from 'lucide-react';
 import { InkBackground } from './InkBackground';
 import { PhoneMockup } from './PhoneMockup';
 import { useLanguage } from '../i18n';
@@ -64,7 +64,7 @@ export function Hero() {
             </p>
 
             <div
-              className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-[720px]"
+              className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[480px]"
               id="download">
 
               <div className="flex flex-col gap-2">
@@ -94,23 +94,6 @@ export function Hero() {
                 <AndroidIcon className="w-5 h-5 flex-shrink-0" />
                 <span className="min-w-0 flex-1 font-song text-base">
                   {t('hero.android_label')}
-                </span>
-                <ArrowUpRight className="w-4 h-4 flex-shrink-0 opacity-70" strokeWidth={1.5} />
-              </a>
-
-              <a
-                href="https://echoweb.arborm.co/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t('hero.web_aria')}
-                className="pill-ghost inline-flex items-center gap-3 w-full h-14 px-5 rounded-2xl text-left"
-                style={{ opacity: 0.72 }}>
-                <Globe className="w-5 h-5 flex-shrink-0" strokeWidth={1.5} />
-                <span className="min-w-0 flex-1">
-                  <span className="block font-sans-cn text-[10px] tracking-[0.18em] ink-faint">
-                    {t('hero.web_label')}
-                  </span>
-                  <span className="block font-song text-sm">{t('hero.web_cta')}</span>
                 </span>
                 <ArrowUpRight className="w-4 h-4 flex-shrink-0 opacity-70" strokeWidth={1.5} />
               </a>
