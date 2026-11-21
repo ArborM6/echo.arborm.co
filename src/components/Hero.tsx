@@ -67,23 +67,18 @@ export function Hero() {
               className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[480px]"
               id="download">
 
-              <div className="flex flex-col gap-2">
-                <button
-                  type="button"
-                  disabled
-                  aria-label={t('hero.ios_aria')}
-                  className="pill-ghost inline-flex items-center gap-3 w-full h-14 px-5 rounded-2xl cursor-not-allowed text-left"
-                  style={{ opacity: 0.72 }}>
-                  
-                  <Apple className="w-5 h-5 flex-shrink-0" strokeWidth={1.5} />
-                  <span className="min-w-0 flex-1 font-song text-base">
-                    {t('hero.ios_label')}
-                  </span>
-                  <span className="font-sans-cn text-[10px] tracking-wider ink-faint">
-                    {t('hero.coming_soon')}
-                  </span>
-                </button>
-              </div>
+              <a
+                href="https://apps.apple.com/app/echo-%E5%9B%9E%E5%93%8D/id6826781454"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t('hero.ios_aria')}
+                className="pill-ghost inline-flex items-center gap-3 w-full h-14 px-5 rounded-2xl text-left">
+                <Apple className="w-5 h-5 flex-shrink-0" strokeWidth={1.5} />
+                <span className="min-w-0 flex-1 font-song text-base">
+                  {t('hero.app_store_label')}
+                </span>
+                <ArrowUpRight className="w-4 h-4 flex-shrink-0 opacity-70" strokeWidth={1.5} />
+              </a>
 
               <a
                 href="https://play.google.com/store/apps/details?id=co.arborm.echo"
