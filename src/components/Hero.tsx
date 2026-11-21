@@ -64,7 +64,7 @@ export function Hero() {
             </p>
 
             <div
-              className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[480px]"
+              className="mt-10 flex flex-col gap-4 max-w-[480px] md:flex-row md:flex-wrap"
               id="download">
 
               <a
@@ -72,9 +72,9 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={t('hero.ios_aria')}
-                className="pill-ghost inline-flex items-center gap-3 w-full h-14 px-5 rounded-2xl text-left">
+                className="pill-ghost inline-flex items-center gap-2 h-14 px-5 rounded-2xl text-left md:flex-1">
                 <Apple className="w-5 h-5 flex-shrink-0" strokeWidth={1.5} />
-                <span className="min-w-0 flex-1 font-song text-base">
+                <span className="flex-1 whitespace-nowrap font-song text-base">
                   {t('hero.app_store_label')}
                 </span>
                 <ArrowUpRight className="w-4 h-4 flex-shrink-0 opacity-70" strokeWidth={1.5} />
@@ -85,9 +85,9 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={t('hero.android_aria')}
-                className="pill-ghost inline-flex items-center gap-3 w-full h-14 px-5 rounded-2xl text-left">
+                className="pill-ghost inline-flex items-center gap-2 h-14 px-5 rounded-2xl text-left md:flex-1">
                 <AndroidIcon className="w-5 h-5 flex-shrink-0" />
-                <span className="min-w-0 flex-1 font-song text-base">
+                <span className="flex-1 whitespace-nowrap font-song text-base">
                   {t('hero.android_label')}
                 </span>
                 <ArrowUpRight className="w-4 h-4 flex-shrink-0 opacity-70" strokeWidth={1.5} />
